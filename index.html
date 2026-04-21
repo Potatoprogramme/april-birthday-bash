@@ -1,0 +1,3214 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🎉 Birthday Bash — April Fools Edition</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Boogaloo&family=Bubblegum+Sans&family=Fredoka+One&family=Nunito:wght@400;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --fool-red: #ff4f7b;
+        --fool-yellow: #ffd166;
+        --fool-blue: #3aa8ff;
+        --fool-green: #4bd8b5;
+        --fool-purple: #8c6bff;
+        --fool-orange: #ff9f5c;
+        --dark: #1f1235;
+        --card-bg: #2d1a4d;
+        --card-border: #5d3fb2;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Nunito", sans-serif;
+        background:
+          radial-gradient(
+            circle at 15% 20%,
+            rgba(255, 209, 102, 0.24),
+            transparent 36%
+          ),
+          radial-gradient(
+            circle at 85% 15%,
+            rgba(58, 168, 255, 0.22),
+            transparent 34%
+          ),
+          linear-gradient(160deg, #160924 0%, #231045 48%, #12081e 100%);
+        color: #fff;
+        min-height: 100vh;
+        overflow-x: hidden;
+        cursor:
+          url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32'><text y='28' font-size='28'>🤡</text></svg>")
+            16 16,
+          auto;
+      }
+
+      /* === AMONG US / POP CULTURE BACKGROUND === */
+      #bg-canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      /* Scrolling meme strip behind everything */
+      .meme-strip {
+        position: fixed;
+        white-space: nowrap;
+        font-size: 68px;
+        opacity: 0.055;
+        pointer-events: none;
+        z-index: 0;
+        user-select: none;
+        letter-spacing: 8px;
+      }
+      .meme-strip:nth-child(1) {
+        top: 8%;
+        animation: strip-scroll 22s linear infinite;
+      }
+      .meme-strip:nth-child(2) {
+        top: 22%;
+        animation: strip-scroll 30s linear infinite reverse;
+        animation-delay: -8s;
+      }
+      .meme-strip:nth-child(3) {
+        top: 38%;
+        animation: strip-scroll 18s linear infinite;
+        animation-delay: -4s;
+      }
+      .meme-strip:nth-child(4) {
+        top: 54%;
+        animation: strip-scroll 26s linear infinite reverse;
+        animation-delay: -12s;
+      }
+      .meme-strip:nth-child(5) {
+        top: 70%;
+        animation: strip-scroll 20s linear infinite;
+        animation-delay: -6s;
+      }
+      .meme-strip:nth-child(6) {
+        top: 85%;
+        animation: strip-scroll 28s linear infinite reverse;
+        animation-delay: -2s;
+      }
+      @keyframes strip-scroll {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(-50%);
+        }
+      }
+
+      /* Confetti canvas */
+      #confetti-canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      /* Header */
+      .header {
+        position: relative;
+        z-index: 10;
+        text-align: center;
+        padding: 48px 24px 32px;
+        background: linear-gradient(
+          180deg,
+          rgba(33, 12, 69, 0.97) 0%,
+          rgba(58, 23, 100, 0.92) 100%
+        );
+        border-bottom: 4px dashed var(--fool-yellow);
+        overflow: hidden;
+      }
+      .header::before {
+        content: "🎭🎉🤡🎈🎊🃏🎭🎉🤡🎈🎊🃏🎭🎉🤡🎈";
+        display: block;
+        font-size: 24px;
+        letter-spacing: 6px;
+        margin-bottom: 16px;
+        animation: scroll-emoji 12s linear infinite;
+        white-space: nowrap;
+      }
+      @keyframes scroll-emoji {
+        0% {
+          transform: translateX(100%);
+        }
+        100% {
+          transform: translateX(-100%);
+        }
+      }
+      .header h1 {
+        font-family: "Fredoka One", cursive;
+        font-size: clamp(2.4rem, 7vw, 5rem);
+        background: linear-gradient(
+          90deg,
+          var(--fool-yellow),
+          var(--fool-red),
+          var(--fool-blue),
+          var(--fool-green)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        line-height: 1.1;
+        animation: wobble 3s ease-in-out infinite;
+      }
+      @keyframes wobble {
+        0%,
+        100% {
+          transform: rotate(-1.5deg);
+        }
+        50% {
+          transform: rotate(1.5deg);
+        }
+      }
+      .header .subtitle {
+        font-family: "Bubblegum Sans", cursive;
+        font-size: 1.2rem;
+        color: var(--fool-yellow);
+        margin-top: 8px;
+        letter-spacing: 2px;
+      }
+      .fool-badge {
+        display: inline-block;
+        background: var(--fool-red);
+        color: #fff;
+        font-family: "Boogaloo", cursive;
+        font-size: 0.85rem;
+        padding: 4px 14px;
+        border-radius: 999px;
+        margin-top: 12px;
+        animation: pulse-badge 1.5s ease-in-out infinite;
+        transform-origin: center;
+      }
+      @keyframes pulse-badge {
+        0%,
+        100% {
+          transform: scale(1);
+          box-shadow: 0 0 0 0 rgba(255, 59, 59, 0.6);
+        }
+        50% {
+          transform: scale(1.06);
+          box-shadow: 0 0 0 8px rgba(255, 59, 59, 0);
+        }
+      }
+
+      /* Navigation dots */
+      .nav-dots {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        padding: 18px 0 8px;
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: rgba(32, 12, 56, 0.86);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 2px dashed rgba(255, 209, 102, 0.38);
+      }
+      .nav-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        cursor: pointer;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+      }
+      .nav-dot:hover,
+      .nav-dot.active {
+        transform: scale(1.4);
+        box-shadow: 0 0 10px currentColor;
+      }
+
+      /* Main container */
+      .container {
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 32px 20px 80px;
+        position: relative;
+        z-index: 5;
+      }
+
+      /* Program section card */
+      .section-card {
+        background: rgba(44, 22, 84, 0.78);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-radius: 20px;
+        border: 2px solid var(--card-border);
+        padding: 28px 32px;
+        margin-bottom: 28px;
+        position: relative;
+        overflow: hidden;
+        transition:
+          transform 0.3s,
+          box-shadow 0.3s;
+        animation: card-in 0.5s ease both;
+      }
+      .section-card:hover {
+        transform: translateY(-4px) rotate(0.3deg);
+        box-shadow: 0 18px 52px rgba(11, 4, 22, 0.62);
+      }
+      @keyframes card-in {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .section-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 6px;
+        height: 100%;
+        border-radius: 20px 0 0 20px;
+      }
+      .card-prayer::before {
+        background: var(--fool-purple);
+      }
+      .card-bday::before {
+        background: var(--fool-yellow);
+      }
+      .card-candle::before {
+        background: var(--fool-orange);
+      }
+      .card-sendoff::before {
+        background: var(--fool-blue);
+      }
+      .card-game1::before {
+        background: var(--fool-green);
+      }
+      .card-game2::before {
+        background: var(--fool-red);
+      }
+      .card-food::before {
+        background: var(--fool-purple);
+      }
+
+      .section-number {
+        font-family: "Fredoka One", cursive;
+        font-size: 0.75rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        opacity: 0.5;
+        margin-bottom: 4px;
+      }
+      .section-title {
+        font-family: "Fredoka One", cursive;
+        font-size: 1.7rem;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 10px;
+      }
+      .section-emoji {
+        font-size: 2rem;
+        animation: spin-slow 8s linear infinite;
+        display: inline-block;
+      }
+      @keyframes spin-slow {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      .section-body {
+        font-size: 1rem;
+        color: rgba(255, 255, 255, 0.8);
+        line-height: 1.7;
+      }
+      .tag {
+        display: inline-block;
+        font-size: 0.78rem;
+        font-weight: 700;
+        padding: 3px 12px;
+        border-radius: 999px;
+        margin: 4px 4px 4px 0;
+        letter-spacing: 0.5px;
+      }
+      .tag-yellow {
+        background: rgba(255, 225, 53, 0.15);
+        color: var(--fool-yellow);
+        border: 1px solid var(--fool-yellow);
+      }
+      .tag-blue {
+        background: rgba(46, 196, 243, 0.15);
+        color: var(--fool-blue);
+        border: 1px solid var(--fool-blue);
+      }
+      .tag-green {
+        background: rgba(61, 220, 132, 0.15);
+        color: var(--fool-green);
+        border: 1px solid var(--fool-green);
+      }
+      .tag-red {
+        background: rgba(255, 59, 59, 0.15);
+        color: var(--fool-red);
+        border: 1px solid var(--fool-red);
+      }
+      .tag-orange {
+        background: rgba(255, 140, 66, 0.15);
+        color: var(--fool-orange);
+        border: 1px solid var(--fool-orange);
+      }
+      .tag-purple {
+        background: rgba(199, 125, 255, 0.15);
+        color: var(--fool-purple);
+        border: 1px solid var(--fool-purple);
+      }
+
+      /* Prize ribbon */
+      .prize-box {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 225, 53, 0.12),
+          rgba(255, 140, 66, 0.12)
+        );
+        border: 2px dashed var(--fool-yellow);
+        border-radius: 14px;
+        padding: 16px 20px;
+        margin-top: 16px;
+      }
+      .prize-box h4 {
+        font-family: "Bubblegum Sans", cursive;
+        font-size: 1.1rem;
+        color: var(--fool-yellow);
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      /* === GAME MODAL === */
+      .game-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 16px;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 999px;
+        font-family: "Fredoka One", cursive;
+        font-size: 1.05rem;
+        cursor: pointer;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+      }
+      .game-btn:hover {
+        transform: scale(1.05);
+      }
+      .btn-green {
+        background: var(--fool-green);
+        color: #1a1a2e;
+      }
+      .btn-red {
+        background: var(--fool-red);
+        color: #fff;
+      }
+      .btn-green:hover {
+        box-shadow: 0 0 20px rgba(61, 220, 132, 0.5);
+      }
+      .btn-red:hover {
+        box-shadow: 0 0 20px rgba(255, 59, 59, 0.5);
+      }
+
+      /* Modal */
+      .modal-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(13, 5, 24, 0.86);
+        z-index: 200;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+      .modal-overlay.open {
+        display: flex;
+      }
+      .modal {
+        background: var(--card-bg);
+        border-radius: 24px;
+        border: 2px solid var(--card-border);
+        max-width: 700px;
+        width: 100%;
+        max-height: 90vh;
+        overflow-y: auto;
+        padding: 36px 32px;
+        position: relative;
+        animation: modal-pop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+      }
+      @keyframes modal-pop {
+        from {
+          transform: scale(0.7);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+      .modal-close {
+        position: absolute;
+        top: 16px;
+        right: 20px;
+        background: none;
+        border: none;
+        font-size: 1.8rem;
+        cursor: pointer;
+        color: #fff;
+        opacity: 0.6;
+        transition:
+          opacity 0.2s,
+          transform 0.2s;
+      }
+      .modal-close:hover {
+        opacity: 1;
+        transform: rotate(90deg);
+      }
+      .modal h2 {
+        font-family: "Fredoka One", cursive;
+        font-size: 2rem;
+        margin-bottom: 6px;
+      }
+      .modal-subtitle {
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.5);
+        margin-bottom: 20px;
+      }
+      .modal h3 {
+        font-family: "Bubblegum Sans", cursive;
+        font-size: 1.2rem;
+        margin: 20px 0 8px;
+        color: var(--fool-yellow);
+      }
+      .modal ul,
+      .modal ol {
+        padding-left: 22px;
+        line-height: 1.9;
+        color: rgba(255, 255, 255, 0.85);
+      }
+      .modal li {
+        margin-bottom: 4px;
+      }
+      .modal p {
+        color: rgba(255, 255, 255, 0.8);
+        line-height: 1.8;
+      }
+
+      /* === SCRABBLE WORD CARDS === */
+      .word-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 16px;
+        margin: 16px 0;
+      }
+      .word-card {
+        background: rgba(61, 220, 132, 0.08);
+        border: 2px solid rgba(61, 220, 132, 0.3);
+        border-radius: 14px;
+        padding: 18px 14px;
+        text-align: center;
+        position: relative;
+      }
+      .word-card .word-letters {
+        display: flex;
+        justify-content: center;
+        gap: 6px;
+        margin-bottom: 10px;
+      }
+      .letter-tile {
+        width: 42px;
+        height: 48px;
+        background: var(--fool-yellow);
+        color: #1a1a2e;
+        font-family: "Fredoka One", cursive;
+        font-size: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        box-shadow: 0 4px 0 rgba(0, 0, 0, 0.3);
+        transition: transform 0.2s;
+        animation: tile-wiggle 3s ease-in-out infinite;
+      }
+      .letter-tile:nth-child(2) {
+        animation-delay: 0.2s;
+        background: var(--fool-blue);
+        color: #fff;
+      }
+      .letter-tile:nth-child(3) {
+        animation-delay: 0.4s;
+        background: var(--fool-red);
+        color: #fff;
+      }
+      .letter-tile:nth-child(4) {
+        animation-delay: 0.6s;
+        background: var(--fool-purple);
+        color: #fff;
+      }
+      @keyframes tile-wiggle {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-4px);
+        }
+      }
+      .word-hint {
+        font-size: 0.85rem;
+        color: rgba(255, 255, 255, 0.55);
+        font-style: italic;
+      }
+      .word-reveal {
+        display: block;
+        margin-top: 8px;
+        font-family: "Bubblegum Sans", cursive;
+        font-size: 0.9rem;
+        color: var(--fool-green);
+        cursor: pointer;
+        text-decoration: underline;
+      }
+      .word-answer {
+        display: none;
+        color: var(--fool-yellow);
+        font-weight: 700;
+        margin-top: 4px;
+      }
+
+      /* Imposter game scoreboard */
+      .imposter-setup {
+        margin-top: 16px;
+      }
+      .player-input-row {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+      .player-input-row input {
+        flex: 1;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1.5px solid rgba(255, 255, 255, 0.2);
+        border-radius: 10px;
+        padding: 10px 14px;
+        color: #fff;
+        font-family: "Nunito", sans-serif;
+        font-size: 0.95rem;
+        outline: none;
+        transition: border-color 0.2s;
+      }
+      .player-input-row input:focus {
+        border-color: var(--fool-blue);
+      }
+      .remove-btn {
+        background: rgba(255, 59, 59, 0.2);
+        border: 1px solid var(--fool-red);
+        color: var(--fool-red);
+        border-radius: 8px;
+        width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 1.1rem;
+        transition: background 0.2s;
+      }
+      .remove-btn:hover {
+        background: rgba(255, 59, 59, 0.4);
+      }
+      .score-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 16px;
+      }
+      .score-table th {
+        background: rgba(255, 255, 255, 0.06);
+        padding: 10px 14px;
+        text-align: left;
+        font-family: "Bubblegum Sans", cursive;
+        font-size: 0.95rem;
+        color: var(--fool-yellow);
+        border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+      }
+      .score-table td {
+        padding: 10px 14px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        font-size: 0.95rem;
+      }
+      .score-table tr:hover td {
+        background: rgba(255, 255, 255, 0.04);
+      }
+      .score-adj {
+        display: flex;
+        gap: 6px;
+        align-items: center;
+      }
+      .adj-btn {
+        background: none;
+        border: 1.5px solid rgba(255, 255, 255, 0.2);
+        border-radius: 6px;
+        color: #fff;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 1.1rem;
+        font-weight: bold;
+        transition: background 0.15s;
+      }
+      .adj-btn.plus {
+        border-color: var(--fool-green);
+        color: var(--fool-green);
+      }
+      .adj-btn.minus {
+        border-color: var(--fool-red);
+        color: var(--fool-red);
+      }
+      .adj-btn:hover {
+        background: rgba(255, 255, 255, 0.08);
+      }
+      .score-val {
+        min-width: 28px;
+        text-align: center;
+        font-family: "Fredoka One", cursive;
+        font-size: 1.1rem;
+      }
+
+      /* Round outcome buttons */
+      .round-btns {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 16px;
+      }
+      .round-btn {
+        padding: 9px 18px;
+        border: none;
+        border-radius: 10px;
+        font-family: "Bubblegum Sans", cursive;
+        font-size: 0.95rem;
+        cursor: pointer;
+        transition:
+          transform 0.15s,
+          box-shadow 0.15s;
+      }
+      .round-btn:hover {
+        transform: scale(1.04);
+      }
+      .rb-group {
+        background: rgba(61, 220, 132, 0.2);
+        color: var(--fool-green);
+        border: 1.5px solid var(--fool-green);
+      }
+      .rb-imposter {
+        background: rgba(255, 59, 59, 0.2);
+        color: var(--fool-red);
+        border: 1.5px solid var(--fool-red);
+      }
+      .rb-redeem {
+        background: rgba(199, 125, 255, 0.2);
+        color: var(--fool-purple);
+        border: 1.5px solid var(--fool-purple);
+      }
+
+      /* Imposter role reveal */
+      .role-reveal-area {
+        margin-top: 20px;
+      }
+      .role-reveal-area h3 {
+        color: var(--fool-red);
+      }
+      .role-card-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        gap: 12px;
+        margin-top: 12px;
+      }
+      .role-card {
+        background: rgba(255, 255, 255, 0.06);
+        border: 2px solid rgba(255, 255, 255, 0.12);
+        border-radius: 12px;
+        padding: 14px 12px;
+        text-align: center;
+        cursor: pointer;
+        transition:
+          transform 0.2s,
+          border-color 0.2s;
+      }
+      .role-card:hover {
+        transform: scale(1.04);
+        border-color: var(--fool-blue);
+      }
+      .role-card .rc-name {
+        font-weight: 700;
+        font-size: 0.9rem;
+        margin-bottom: 6px;
+      }
+      .role-card .rc-role {
+        font-size: 0.8rem;
+        padding: 3px 10px;
+        border-radius: 999px;
+        display: inline-block;
+      }
+      .role-honest {
+        background: rgba(61, 220, 132, 0.2);
+        color: var(--fool-green);
+      }
+      .role-imposter {
+        background: rgba(255, 59, 59, 0.3);
+        color: var(--fool-red);
+        font-weight: 700;
+      }
+      .role-hidden {
+        background: rgba(255, 255, 255, 0.1);
+        color: rgba(255, 255, 255, 0.3);
+      }
+
+      /* Word selector for imposter */
+      .word-selector {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 12px;
+      }
+      .word-chip {
+        padding: 8px 18px;
+        border-radius: 999px;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.05);
+        color: #fff;
+        cursor: pointer;
+        font-family: "Nunito", sans-serif;
+        font-size: 0.95rem;
+        transition: all 0.15s;
+      }
+      .word-chip:hover,
+      .word-chip.selected {
+        background: var(--fool-blue);
+        border-color: var(--fool-blue);
+        color: #1a1a2e;
+        font-weight: 700;
+      }
+
+      /* Round log */
+      .round-log {
+        margin-top: 16px;
+        max-height: 160px;
+        overflow-y: auto;
+      }
+      .log-entry {
+        padding: 8px 12px;
+        margin-bottom: 6px;
+        border-radius: 8px;
+        font-size: 0.88rem;
+        background: rgba(255, 255, 255, 0.05);
+        border-left: 3px solid var(--fool-blue);
+      }
+
+      /* === CELEBRANT CARDS === */
+      .celebrant-strip {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 14px;
+        padding: 28px 20px 8px;
+        position: relative;
+        z-index: 10;
+      }
+      .celebrant-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        background: rgba(52, 28, 97, 0.76);
+        backdrop-filter: blur(10px);
+        border: 2px solid rgba(255, 209, 102, 0.3);
+        border-radius: 18px;
+        padding: 18px 16px 14px;
+        width: 130px;
+        transition:
+          transform 0.25s,
+          border-color 0.25s,
+          box-shadow 0.25s;
+        animation: card-in 0.5s ease both;
+        cursor: default;
+      }
+      .celebrant-card:hover {
+        transform: translateY(-6px) scale(1.04);
+        border-color: var(--fool-yellow);
+        box-shadow: 0 12px 32px rgba(255, 225, 53, 0.2);
+      }
+      .celebrant-avatar {
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Fredoka One", cursive;
+        font-size: 1.3rem;
+        font-weight: 700;
+        flex-shrink: 0;
+        border: 3px solid rgba(255, 255, 255, 0.15);
+        position: relative;
+        overflow: visible;
+        box-shadow: 0 8px 18px rgba(21, 7, 37, 0.35);
+      }
+      .celebrant-avatar::before {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 0;
+        top: -28px;
+        left: 50%;
+        transform: translateX(-50%) rotate(-6deg);
+        border-left: 14px solid transparent;
+        border-right: 14px solid transparent;
+        border-bottom: 28px solid var(--fool-red);
+        filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.28));
+        animation: hat-bounce 1.8s ease-in-out infinite;
+        transform-origin: center bottom;
+      }
+      .celebrant-avatar span,
+      .celebrant-avatar {
+        z-index: 1;
+      }
+      .celebrant-avatar::after {
+        content: "🎂";
+        position: absolute;
+        font-size: 12px;
+        bottom: -2px;
+        right: -2px;
+        background: var(--dark);
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1;
+        z-index: 2;
+      }
+      .celebrant-card:nth-child(odd) .celebrant-avatar::before {
+        border-bottom-color: var(--fool-blue);
+      }
+      .celebrant-card:nth-child(3n) .celebrant-avatar::before {
+        border-bottom-color: var(--fool-yellow);
+      }
+      .celebrant-card:nth-child(4n) .celebrant-avatar::before {
+        border-bottom-color: var(--fool-green);
+      }
+      @keyframes hat-bounce {
+        0%,
+        100% {
+          transform: translateX(-50%) rotate(-6deg) translateY(0);
+        }
+        50% {
+          transform: translateX(-50%) rotate(4deg) translateY(-2px);
+        }
+      }
+      .celebrant-name {
+        font-family: "Bubblegum Sans", cursive;
+        font-size: 0.82rem;
+        text-align: center;
+        color: rgba(255, 255, 255, 0.9);
+        line-height: 1.3;
+      }
+      .celebrant-num {
+        font-family: "Fredoka One", cursive;
+        font-size: 0.7rem;
+        color: var(--fool-yellow);
+        opacity: 0.7;
+      }
+
+      /* Celebrant section header label */
+      .celebrant-label {
+        text-align: center;
+        font-family: "Fredoka One", cursive;
+        font-size: 1.05rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--fool-yellow);
+        opacity: 0.7;
+        padding-top: 20px;
+        position: relative;
+        z-index: 10;
+      }
+
+      .floating-emoji {
+        position: fixed;
+        font-size: 2rem;
+        pointer-events: none;
+        z-index: 1;
+        animation: float-up linear forwards;
+      }
+      @keyframes float-up {
+        0% {
+          opacity: 1;
+          transform: translateY(0) rotate(0deg);
+        }
+        100% {
+          opacity: 0;
+          transform: translateY(-200px) rotate(360deg);
+        }
+      }
+
+      /* Tabs inside modals */
+      .tab-bar {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+      }
+      .tab-btn {
+        padding: 8px 18px;
+        border: 2px solid rgba(255, 255, 255, 0.15);
+        background: none;
+        border-radius: 999px;
+        color: rgba(255, 255, 255, 0.5);
+        font-family: "Bubblegum Sans", cursive;
+        cursor: pointer;
+        font-size: 0.95rem;
+        transition: all 0.2s;
+      }
+      .tab-btn.active {
+        background: var(--fool-blue);
+        border-color: var(--fool-blue);
+        color: #1a1a2e;
+        font-weight: 700;
+      }
+      .tab-pane {
+        display: none;
+      }
+      .tab-pane.active {
+        display: block;
+      }
+
+      /* Utility */
+      .divider {
+        border: none;
+        border-top: 1px dashed rgba(255, 255, 255, 0.1);
+        margin: 16px 0;
+      }
+      .small-note {
+        font-size: 0.82rem;
+        color: rgba(255, 255, 255, 0.4);
+        margin-top: 8px;
+      }
+      .highlight {
+        color: var(--fool-yellow);
+        font-weight: 700;
+      }
+      .text-center {
+        text-align: center;
+      }
+      .mt-12 {
+        margin-top: 12px;
+      }
+      .mt-16 {
+        margin-top: 16px;
+      }
+      .flex-center {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      /* Footer */
+      .footer {
+        text-align: center;
+        padding: 32px 20px;
+        font-size: 0.85rem;
+        color: rgba(255, 239, 210, 0.45);
+        border-top: 2px dashed rgba(255, 209, 102, 0.2);
+        position: relative;
+        z-index: 5;
+      }
+
+      /* Scrollbar */
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 3px;
+      }
+
+      @media (max-width: 600px) {
+        .modal {
+          padding: 24px 18px;
+        }
+        .section-card {
+          padding: 20px 18px;
+        }
+        .word-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- POP CULTURE BG -->
+    <canvas id="bg-canvas"></canvas>
+    <canvas id="confetti-canvas"></canvas>
+
+    <!-- Scrolling meme strips -->
+    <div class="meme-strip">
+      🤡🎂🃏🎭🎈🎉🍰🤡🎂🃏🎭🎈🎉🍰🤡🎂🃏🎭🎈🎉🍰🤡🎂🃏🎭🎈🎉🍰
+    </div>
+    <div class="meme-strip">
+      🕵️👀🔍🧩🎮🕹️🏆🥇🎖️🕵️👀🔍🧩🎮🕹️🏆🥇🎖️🕵️👀🔍🧩🎮🕹️🏆🥇🎖️
+    </div>
+    <div class="meme-strip">
+      ✨💫⭐🌟💥🔥✨💫⭐🌟💥🔥✨💫⭐🌟💥🔥✨💫⭐🌟💥🔥✨💫⭐🌟💥🔥
+    </div>
+    <div class="meme-strip">
+      🎁🎀🎊🎉🥳🎂🍰🧁🎁🎀🎊🎉🥳🎂🍰🧁🎁🎀🎊🎉🥳🎂🍰🧁🎁🎀🎊🎉🥳🎂
+    </div>
+    <div class="meme-strip">
+      🤣😂🤡👻🎭🃏😈🤣😂🤡👻🎭🃏😈🤣😂🤡👻🎭🃏😈🤣😂🤡👻🎭🃏😈
+    </div>
+    <div class="meme-strip">
+      🚀🌙⭐🪐🌌🛸🚀🌙⭐🪐🌌🛸🚀🌙⭐🪐🌌🛸🚀🌙⭐🪐🌌🛸🚀🌙⭐🪐
+    </div>
+
+    <!-- HEADER -->
+    <div class="header">
+      <h1>🎂 Birthday Bash 🃏</h1>
+      <div class="subtitle">✨ April Fools Edition ✨</div>
+      <span class="fool-badge">🤡 Nobody is safe from fun today!</span>
+    </div>
+
+    <!-- CELEBRANT SHOWCASE -->
+    <div class="celebrant-label">🎂 Today's Birthday Stars 🎂</div>
+    <div class="celebrant-strip">
+      <div class="celebrant-card" style="animation-delay: 0.05s">
+        <div
+          class="celebrant-avatar"
+          style="background: linear-gradient(135deg, #6f52ed, #a990ff)"
+        >
+          YD
+        </div>
+        <div class="celebrant-name">Ma'am Y De Los Trino</div>
+        <div class="celebrant-num">#1 ⭐</div>
+      </div>
+      <div class="celebrant-card" style="animation-delay: 0.1s">
+        <div
+          class="celebrant-avatar"
+          style="background: linear-gradient(135deg, #2d7de5, #71c2ff)"
+        >
+          XN
+        </div>
+        <div class="celebrant-name">Xavier Nieva</div>
+        <div class="celebrant-num">#2 ⭐</div>
+      </div>
+      <div class="celebrant-card" style="animation-delay: 0.15s">
+        <div
+          class="celebrant-avatar"
+          style="background: linear-gradient(135deg, #ea2f63, #ff6d8f)"
+        >
+          JN
+        </div>
+        <div class="celebrant-name">Julius Caesar Naag</div>
+        <div class="celebrant-num">#3 ⭐</div>
+      </div>
+      <div class="celebrant-card" style="animation-delay: 0.2s">
+        <div
+          class="celebrant-avatar"
+          style="background: linear-gradient(135deg, #c145f8, #ff8acb)"
+        >
+          JR
+        </div>
+        <div class="celebrant-name">Jay-Anne Respeto</div>
+        <div class="celebrant-num">#4 ⭐</div>
+      </div>
+      <div class="celebrant-card" style="animation-delay: 0.25s">
+        <div
+          class="celebrant-avatar"
+          style="background: linear-gradient(135deg, #12a889, #63e6c4)"
+        >
+          JS
+        </div>
+        <div class="celebrant-name">Jenek Sarte</div>
+        <div class="celebrant-num">#5 ⭐</div>
+      </div>
+      <div class="celebrant-card" style="animation-delay: 0.3s">
+        <div
+          class="celebrant-avatar"
+          style="background: linear-gradient(135deg, #ff7f3f, #ffbb73)"
+        >
+          AD
+        </div>
+        <div class="celebrant-name">Angel Dela Torre</div>
+        <div class="celebrant-num">#6 ⭐</div>
+      </div>
+    </div>
+
+    <!-- NAV DOTS -->
+    <div class="nav-dots" id="navDots"></div>
+
+    <!-- MAIN PROGRAM -->
+    <div class="container" id="mainProgram">
+      <!-- 1. OPENING PRAYER -->
+      <div class="section-card card-prayer" data-section="1">
+        <div class="section-number">Part 01</div>
+        <div class="section-title">
+          <span class="section-emoji">🙏</span>
+          <span style="color: var(--fool-purple)">Opening Prayer</span>
+        </div>
+        <div class="section-body">
+          <p>
+            We kick off our celebration with a moment of gratitude and blessing.
+          </p>
+          <div class="mt-12">
+            <span class="tag tag-purple">Prayer Leader</span>
+            <strong style="color: var(--fool-purple)"> Gian</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. BIRTHDAY CELEBRANTS -->
+      <div class="section-card card-bday" data-section="2">
+        <div class="section-number">Part 02</div>
+        <div class="section-title">
+          <span class="section-emoji" style="animation: none">🎂</span>
+          <span style="color: var(--fool-yellow)">Birthday Celebrants</span>
+        </div>
+        <div class="section-body">
+          <p>
+            Spotlight on our birthday stars! 🌟 Each celebrant will be called up
+            for their moment of fame.
+          </p>
+          <div
+            class="mt-12"
+            style="display: flex; flex-direction: column; gap: 8px"
+          >
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                padding: 10px 14px;
+                background: rgba(255, 255, 255, 0.05);
+                border-radius: 12px;
+                border-left: 3px solid var(--fool-purple);
+              "
+            >
+              <span
+                style="
+                  font-family: &quot;Fredoka One&quot;, cursive;
+                  color: var(--fool-purple);
+                  min-width: 24px;
+                "
+                >1.</span
+              >
+              <span style="font-weight: 700">Ma'am Y De Los Trino</span>
+            </div>
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                padding: 10px 14px;
+                background: rgba(255, 255, 255, 0.05);
+                border-radius: 12px;
+                border-left: 3px solid var(--fool-blue);
+              "
+            >
+              <span
+                style="
+                  font-family: &quot;Fredoka One&quot;, cursive;
+                  color: var(--fool-blue);
+                  min-width: 24px;
+                "
+                >2.</span
+              >
+              <span style="font-weight: 700">Xavier Nieva</span>
+            </div>
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                padding: 10px 14px;
+                background: rgba(255, 255, 255, 0.05);
+                border-radius: 12px;
+                border-left: 3px solid var(--fool-red);
+              "
+            >
+              <span
+                style="
+                  font-family: &quot;Fredoka One&quot;, cursive;
+                  color: var(--fool-red);
+                  min-width: 24px;
+                "
+                >3.</span
+              >
+              <span style="font-weight: 700">Julius Caesar Naag</span>
+            </div>
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                padding: 10px 14px;
+                background: rgba(255, 255, 255, 0.05);
+                border-radius: 12px;
+                border-left: 3px solid #ff80ab;
+              "
+            >
+              <span
+                style="
+                  font-family: &quot;Fredoka One&quot;, cursive;
+                  color: #ff80ab;
+                  min-width: 24px;
+                "
+                >4.</span
+              >
+              <span style="font-weight: 700">Jay-Anne Respeto</span>
+            </div>
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                padding: 10px 14px;
+                background: rgba(255, 255, 255, 0.05);
+                border-radius: 12px;
+                border-left: 3px solid var(--fool-green);
+              "
+            >
+              <span
+                style="
+                  font-family: &quot;Fredoka One&quot;, cursive;
+                  color: var(--fool-green);
+                  min-width: 24px;
+                "
+                >5.</span
+              >
+              <span style="font-weight: 700">Jenek Sarte</span>
+            </div>
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                padding: 10px 14px;
+                background: rgba(255, 255, 255, 0.05);
+                border-radius: 12px;
+                border-left: 3px solid var(--fool-orange);
+              "
+            >
+              <span
+                style="
+                  font-family: &quot;Fredoka One&quot;, cursive;
+                  color: var(--fool-orange);
+                  min-width: 24px;
+                "
+                >6.</span
+              >
+              <span style="font-weight: 700">Angel Dela Torre</span>
+            </div>
+          </div>
+          <div class="mt-12">
+            <span class="tag tag-yellow">🎖️ Giving of Certificates</span>
+            <span class="tag tag-orange">🎁 Distribution of Tokens</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. BLOWING OF CANDLES -->
+      <div class="section-card card-candle" data-section="3">
+        <div class="section-number">Part 03</div>
+        <div class="section-title">
+          <span class="section-emoji" style="animation-duration: 2s">🕯️</span>
+          <span style="color: var(--fool-orange)">Blowing of Candles</span>
+        </div>
+        <div class="section-body">
+          <p>
+            Make a wish and blow those candles out — but watch out, it's April
+            Fools! 🎂💨
+          </p>
+          <p class="small-note mt-12">
+            🎶 Happy Birthday song to be sung by everyone present!
+          </p>
+        </div>
+      </div>
+
+      <!-- 4. SEND-OFF -->
+      <div class="section-card card-sendoff" data-section="4">
+        <div class="section-number">Part 04</div>
+        <div class="section-title">
+          <span class="section-emoji" style="animation: none">👋</span>
+          <span style="color: var(--fool-blue)">Employee Send-off</span>
+        </div>
+        <div class="section-body">
+          <p>
+            A special farewell and recognition for one of our beloved team
+            members who's heading to a new adventure!
+          </p>
+          <div class="mt-12">
+            <span class="tag tag-blue">🎖️ Certificate of Appreciation</span>
+            <span class="tag tag-blue">💌 Messages from the Team</span>
+          </div>
+          <p class="small-note">
+            Let's give them a big, warm — and possibly April-Fool-sized —
+            send-off! 🥲🎉
+          </p>
+        </div>
+      </div>
+
+      <!-- 5. GAME 1 -->
+      <div class="section-card card-game1" data-section="5">
+        <div class="section-number">Part 05 — Game 1</div>
+        <div class="section-title">
+          <span class="section-emoji" style="animation: none">🔤</span>
+          <span style="color: var(--fool-green)">Human Scrabble</span>
+        </div>
+        <div class="section-body">
+          <p>
+            Teams compete by physically rearranging themselves to spell out
+            secret April Fools-themed words! Each player wears a letter — you
+            ARE the tile! 🧍‍♀️🔡🧍‍♂️
+          </p>
+          <div class="mt-12">
+            <span class="tag tag-green">🏆 Team Game</span>
+            <span class="tag tag-green">4-Letter Words</span>
+            <span class="tag tag-green">April Fools Theme</span>
+          </div>
+          <div class="prize-box">
+            <h4>🏆 Prize</h4>
+            <p>
+              Winning team each gets a
+              <span class="highlight">Mystery Bag</span> — sealed in a
+              jester-wrapped box 🎭. Could be a snack hamper, a gift card, OR… a
+              (joke) "lifetime supply of glitter."
+              <em
+                >One team member also gets the coveted
+                <span class="highlight">Golden Fool Crown 👑</span>.</em
+              >
+            </p>
+          </div>
+          <button
+            class="game-btn btn-green mt-16"
+            onclick="openModal('scrabbleModal')"
+          >
+            🎮 View Game Details & Words
+          </button>
+        </div>
+      </div>
+
+      <!-- 6. GAME 2 -->
+      <div class="section-card card-game2" data-section="6">
+        <div class="section-number">Part 06 — Game 2</div>
+        <div class="section-title">
+          <span class="section-emoji" style="animation: none">🕵️</span>
+          <span style="color: var(--fool-red)">Word Imposter</span>
+        </div>
+        <div class="section-body">
+          <p>
+            One player gets a <em>different</em> word. Everyone gives clues. The
+            group votes — but the Imposter can still steal with a secret guess!
+            🃏
+          </p>
+          <div class="mt-12">
+            <span class="tag tag-red">Multi-Round</span>
+            <span class="tag tag-red">Point Tracker Included</span>
+            <span class="tag tag-red">Bluffing & Deception</span>
+          </div>
+          <div class="prize-box">
+            <h4>🏆 Prize</h4>
+            <p>
+              The top point-scorer (group or imposter) wins a
+              <span class="highlight">Restaurant Gift Card 🍽️</span> or a fun
+              <span class="highlight">Office Prank Kit 🤡</span> — complete with
+              fake bugs, whoopee cushion, and sticky notes. The best Imposter
+              overall also earns the
+              <span class="highlight">"Master of Deception" 🕵️ Trophy</span> (a
+              jester hat they must wear for the rest of the event).
+            </p>
+          </div>
+          <button
+            class="game-btn btn-red mt-16"
+            onclick="openModal('imposterModal')"
+          >
+            🎮 Open Scoreboard & Game
+          </button>
+        </div>
+      </div>
+
+      <!-- 7. BLESSING OF FOOD -->
+      <div class="section-card card-food" data-section="7">
+        <div class="section-number">Part 07</div>
+        <div class="section-title">
+          <span class="section-emoji">🍽️</span>
+          <span style="color: var(--fool-purple)">Blessing of Food</span>
+        </div>
+        <div class="section-body">
+          <p>
+            Before we dig in, we give thanks for this wonderful spread and for
+            the amazing people we share it with.
+          </p>
+          <div class="mt-12">
+            <span class="tag tag-purple">Prayer Leader</span>
+            <strong style="color: var(--fool-purple)"> Gian</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8. EATING TIME -->
+      <div
+        class="section-card card-food"
+        data-section="8"
+        style="
+          border-color: rgba(255, 140, 66, 0.3);
+          background: linear-gradient(135deg, #16213e, #1a1020);
+        "
+      >
+        <div class="section-number">Part 08</div>
+        <div class="section-title">
+          <span class="section-emoji" style="animation-duration: 1s">🍕</span>
+          <span style="color: var(--fool-orange)">Eating Time! 🎉</span>
+        </div>
+        <div class="section-body">
+          <p>
+            The best part of any party — time to eat, laugh, and enjoy each
+            other's company! Don't forget to check if your food is… real. It's
+            April Fools, after all. 😏🍴
+          </p>
+          <p class="small-note mt-12">
+            Enjoy! 🥂 Cheers to our birthday celebrants and our departing
+            friend!
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- /container -->
+
+    <div class="footer">
+      🃏 April Fools Birthday Bash — Made with 🎉 & mischief &nbsp;|&nbsp; No
+      real pranks were harmed in this event.
+    </div>
+
+    <!-- ===== SCRABBLE MODAL ===== -->
+    <div class="modal-overlay" id="scrabbleModal">
+      <div class="modal">
+        <button class="modal-close" onclick="closeModal('scrabbleModal')">
+          ✕
+        </button>
+        <h2 style="color: var(--fool-green)">🔤 Human Scrabble</h2>
+        <p class="modal-subtitle">
+          April Fools Edition — 4-Letter Word Challenge
+        </p>
+
+        <div class="tab-bar">
+          <button
+            class="tab-btn active"
+            onclick="switchTab(this, 'scrabble-rules')"
+          >
+            📋 Rules
+          </button>
+          <button class="tab-btn" onclick="switchTab(this, 'scrabble-words')">
+            🔡 Words
+          </button>
+        </div>
+
+        <div class="tab-pane active" id="scrabble-rules">
+          <h3>🎯 Objective</h3>
+          <p>
+            Each team physically rearranges themselves to spell a given word.
+            Fastest correct formation wins the round!
+          </p>
+
+          <h3>👥 Teams</h3>
+          <ul>
+            <li>
+              Divide all players into <strong>2–3 teams</strong> of equal size.
+            </li>
+            <li>
+              Each player is assigned one letter tile (front AND back of their
+              shirt/card).
+            </li>
+            <li>
+              Spare players act as "Wildcards" — they can be called in as any
+              letter.
+            </li>
+          </ul>
+
+          <h3>🕹️ How to Play</h3>
+          <ol>
+            <li>
+              The Game Master announces:
+              <em>"The word has ___ letters and means…"</em> (hints only, no
+              spelling!).
+            </li>
+            <li>
+              Teams huddle and scramble to figure out which players represent
+              the right letters.
+            </li>
+            <li>
+              Players physically line up in the correct order to form the word.
+            </li>
+            <li>
+              First team to form the word correctly and shout
+              <span class="highlight">"SCRABBLE!"</span> wins the round.
+            </li>
+            <li>
+              Play 3 rounds (one per word). Team with most rounds won takes the
+              prize!
+            </li>
+          </ol>
+
+          <h3>⚠️ Rules</h3>
+          <ul>
+            <li>No whispering the word — only clues and charades allowed!</li>
+            <li>
+              Players must stay in their formed line for 5 seconds to count as
+              valid.
+            </li>
+            <li>
+              If a team shouts the word aloud before forming, they forfeit that
+              round.
+            </li>
+            <li>
+              The Game Master's decision is FINAL — and definitely NOT a prank.
+            </li>
+          </ul>
+        </div>
+
+        <div class="tab-pane" id="scrabble-words">
+          <p style="margin-bottom: 16px">
+            Three secret words for the rounds. Click
+            <em>"Reveal Answer"</em> only when ready!
+          </p>
+          <div class="word-grid">
+            <div class="word-card">
+              <div class="word-letters">
+                <div class="letter-tile">?</div>
+                <div class="letter-tile">?</div>
+                <div class="letter-tile">?</div>
+                <div class="letter-tile">?</div>
+              </div>
+              <div class="word-hint">
+                Round 1 — Hint: Something you shout on April 1st to trick
+                someone 😈
+              </div>
+              <span class="word-reveal" onclick="revealWord(this, 'FOOL')"
+                >👁 Reveal Answer</span
+              >
+              <div class="word-answer">✅ FOOL</div>
+            </div>
+            <div class="word-card">
+              <div class="word-letters">
+                <div class="letter-tile">?</div>
+                <div class="letter-tile">?</div>
+                <div class="letter-tile">?</div>
+                <div class="letter-tile">?</div>
+              </div>
+              <div class="word-hint">
+                Round 2 — Hint: A mischievous trick or joke played on someone 😂
+              </div>
+              <span class="word-reveal" onclick="revealWord(this, 'HOAX')"
+                >👁 Reveal Answer</span
+              >
+              <div class="word-answer">✅ HOAX</div>
+            </div>
+            <div class="word-card">
+              <div class="word-letters">
+                <div class="letter-tile">?</div>
+                <div class="letter-tile">?</div>
+                <div class="letter-tile">?</div>
+                <div class="letter-tile">?</div>
+              </div>
+              <div class="word-hint">
+                Round 3 — Hint: What a jester always brings to the party 🎭
+              </div>
+              <span class="word-reveal" onclick="revealWord(this, 'JEST')"
+                >👁 Reveal Answer</span
+              >
+              <div class="word-answer">✅ JEST</div>
+            </div>
+          </div>
+
+          <div class="prize-box mt-16">
+            <h4>🏆 Prize for Human Scrabble Winner</h4>
+            <p>
+              🎁 <strong>Mystery Bag</strong> per winning team member (snack
+              hamper, gift card, or gag gift 🤣) + the
+              <strong>Golden Fool Crown 👑</strong> for the MVP player!
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== IMPOSTER MODAL ===== -->
+    <div class="modal-overlay" id="imposterModal">
+      <div class="modal">
+        <button class="modal-close" onclick="closeModal('imposterModal')">
+          ✕
+        </button>
+        <h2 style="color: var(--fool-red)">🕵️ Word Imposter</h2>
+        <p class="modal-subtitle">
+          Bluff, detect, and steal — April Fools style!
+        </p>
+
+        <div class="tab-bar">
+          <button class="tab-btn active" onclick="switchTab(this, 'imp-rules')">
+            📋 Rules
+          </button>
+          <button class="tab-btn" onclick="switchTab(this, 'imp-setup')">
+            👥 Players
+          </button>
+          <button class="tab-btn" onclick="switchTab(this, 'imp-play')">
+            🎮 Play
+          </button>
+        </div>
+
+        <!-- Rules Tab -->
+        <div class="tab-pane active" id="imp-rules">
+          <h3>🎯 Point System</h3>
+          <ul>
+            <li>
+              <strong style="color: var(--fool-green)"
+                >Group Wins (Imposter Identified):</strong
+              >
+              All honest players get <span class="highlight">1–2 points</span>.
+            </li>
+            <li>
+              <strong style="color: var(--fool-red)"
+                >Imposter Wins (Blends In):</strong
+              >
+              Imposter gets <span class="highlight">2–3 points</span> if not
+              voted out.
+            </li>
+            <li>
+              <strong style="color: var(--fool-purple)"
+                >Imposter Redemption:</strong
+              >
+              If caught but correctly guesses the secret word →
+              <span class="highlight">steals the round points!</span>
+            </li>
+            <li>
+              <strong style="color: var(--fool-blue)">Individual Bonus:</strong>
+              Best clue giver gets
+              <span class="highlight">+1 bonus point</span>. Wrong vote against
+              innocent = <span class="highlight">−1 point</span>.
+            </li>
+          </ul>
+
+          <h3>🕹️ How to Play</h3>
+          <ol>
+            <li>
+              Game Master secretly picks one player as the
+              <strong>Imposter</strong>.
+            </li>
+            <li>
+              Everyone receives the <em>same word</em> — except the Imposter
+              gets a <em>different related word</em>.
+            </li>
+            <li>
+              Players take turns giving a one-word (or short) clue about their
+              word.
+            </li>
+            <li>
+              After all clues, the group discusses and votes on who the Imposter
+              is.
+            </li>
+            <li>
+              Majority vote eliminates a player. The Imposter may then guess the
+              real word to redeem.
+            </li>
+            <li>Score points, rotate roles, repeat!</li>
+          </ol>
+
+          <h3>💡 Sample Word Pairs (April Fools theme)</h3>
+          <ul>
+            <li>
+              Honest: <span class="highlight">CAKE</span> → Imposter:
+              <span class="highlight">PIE</span>
+            </li>
+            <li>
+              Honest: <span class="highlight">PARTY</span> → Imposter:
+              <span class="highlight">MEETING</span>
+            </li>
+            <li>
+              Honest: <span class="highlight">CLOWN</span> → Imposter:
+              <span class="highlight">MIME</span>
+            </li>
+            <li>
+              Honest: <span class="highlight">TRICK</span> → Imposter:
+              <span class="highlight">TREAT</span>
+            </li>
+            <li>
+              Honest: <span class="highlight">JESTER</span> → Imposter:
+              <span class="highlight">JOKER</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Setup Tab -->
+        <div class="tab-pane" id="imp-setup">
+          <h3>Add Players</h3>
+          <div id="playerList"></div>
+          <button
+            class="game-btn btn-green"
+            onclick="addPlayer()"
+            style="margin-top: 10px; font-size: 0.95rem; padding: 10px 20px"
+          >
+            + Add Player
+          </button>
+          <hr class="divider" />
+          <button
+            class="game-btn btn-red"
+            onclick="initGame()"
+            style="font-size: 0.95rem; padding: 10px 20px"
+          >
+            ✅ Start Game with These Players
+          </button>
+          <p class="small-note">
+            Add all participants before starting. You can add/remove freely.
+          </p>
+        </div>
+
+        <!-- Play Tab -->
+        <div class="tab-pane" id="imp-play">
+          <div
+            id="gameNotReady"
+            style="
+              text-align: center;
+              padding: 24px 0;
+              color: rgba(255, 255, 255, 0.4);
+            "
+          >
+            <div style="font-size: 3rem">👥</div>
+            <p>
+              Add players in the <strong>Players</strong> tab first, then click
+              <em>"Start Game."</em>
+            </p>
+          </div>
+          <div id="gameArea" style="display: none">
+            <h3 style="color: var(--fool-blue)">🎲 Round Controls</h3>
+            <p
+              style="
+                font-size: 0.9rem;
+                color: rgba(255, 255, 255, 0.5);
+                margin-bottom: 12px;
+              "
+            >
+              Assign outcome for current round:
+            </p>
+            <div class="round-btns">
+              <button class="round-btn rb-group" onclick="awardPoints('group')">
+                ✅ Group Wins (+1–2 pts each)
+              </button>
+              <button
+                class="round-btn rb-imposter"
+                onclick="awardPoints('imposter')"
+              >
+                🕵️ Imposter Wins (+2–3 pts)
+              </button>
+              <button
+                class="round-btn rb-redeem"
+                onclick="awardPoints('redeem')"
+              >
+                ✨ Imposter Redeems (steals)
+              </button>
+            </div>
+
+            <hr class="divider" />
+            <h3 style="color: var(--fool-yellow)">📊 Scoreboard</h3>
+            <table class="score-table" id="scoreTable">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Player</th>
+                  <th>Role</th>
+                  <th>Score</th>
+                  <th>Adjust</th>
+                </tr>
+              </thead>
+              <tbody id="scoreTbody"></tbody>
+            </table>
+
+            <hr class="divider" />
+            <div class="role-reveal-area">
+              <h3>🃏 Role Assignment (click to reveal)</h3>
+              <p class="small-note">
+                Tap a card to reveal a player's secret role. Share device
+                privately!
+              </p>
+              <div class="role-card-grid" id="roleGrid"></div>
+              <button
+                class="game-btn btn-red mt-16"
+                onclick="shuffleRoles()"
+                style="font-size: 0.9rem; padding: 9px 20px"
+              >
+                🔀 Re-shuffle Roles
+              </button>
+            </div>
+
+            <hr class="divider" />
+            <h3 style="color: var(--fool-green)">📝 Round Log</h3>
+            <div class="round-log" id="roundLog">
+              <p class="small-note">No rounds played yet.</p>
+            </div>
+            <button
+              class="game-btn btn-red mt-16"
+              onclick="resetGame()"
+              style="
+                font-size: 0.85rem;
+                padding: 8px 18px;
+                background: rgba(255, 59, 59, 0.2);
+                color: var(--fool-red);
+                border: 1.5px solid var(--fool-red);
+              "
+            >
+              🗑️ Reset All Scores
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // =====================================================
+      // 🎭 APRIL FOOLS POP CULTURE BACKGROUND ENGINE 🎭
+      // =====================================================
+      const bgCanvas = document.getElementById("bg-canvas");
+      const bgCtx = bgCanvas.getContext("2d");
+      function resizeBg() {
+        bgCanvas.width = window.innerWidth;
+        bgCanvas.height = window.innerHeight;
+        initBgObjects();
+      }
+      window.addEventListener("resize", resizeBg);
+
+      let bgObjects = [];
+      let bgT = 0;
+
+      // --- Pop culture drawn characters ---
+      // Each is a canvas draw function returning a bounding size
+
+      function drawJoker(c, x, y, s, a) {
+        // Batman's Joker — purple suit hint, white face, green hair
+        c.save();
+        c.globalAlpha = a;
+        c.translate(x, y);
+        // Body / suit (purple)
+        c.beginPath();
+        c.ellipse(0, s * 0.55, s * 0.32, s * 0.48, 0, 0, Math.PI * 2);
+        c.fillStyle = "#6a0dad";
+        c.fill();
+        // Green tie stripe
+        c.beginPath();
+        c.moveTo(-s * 0.05, s * 0.15);
+        c.lineTo(s * 0.05, s * 0.15);
+        c.lineTo(s * 0.04, s * 0.7);
+        c.lineTo(-s * 0.04, s * 0.7);
+        c.closePath();
+        c.fillStyle = "#39ff14";
+        c.fill();
+        // Head (white/pale)
+        c.beginPath();
+        c.ellipse(0, -s * 0.15, s * 0.28, s * 0.32, 0, 0, Math.PI * 2);
+        c.fillStyle = "#f0ead6";
+        c.fill();
+        // Green hair
+        c.beginPath();
+        c.ellipse(0, -s * 0.44, s * 0.22, s * 0.18, 0, 0, Math.PI * 2);
+        c.fillStyle = "#39ff14";
+        c.fill();
+        c.beginPath();
+        c.ellipse(
+          -s * 0.18,
+          -s * 0.38,
+          s * 0.1,
+          s * 0.15,
+          -0.4,
+          0,
+          Math.PI * 2,
+        );
+        c.fill();
+        c.beginPath();
+        c.ellipse(s * 0.18, -s * 0.38, s * 0.1, s * 0.15, 0.4, 0, Math.PI * 2);
+        c.fill();
+        // Eyes
+        c.beginPath();
+        c.ellipse(-s * 0.09, -s * 0.17, s * 0.05, s * 0.04, 0, 0, Math.PI * 2);
+        c.fillStyle = "#111";
+        c.fill();
+        c.beginPath();
+        c.ellipse(s * 0.09, -s * 0.17, s * 0.05, s * 0.04, 0, 0, Math.PI * 2);
+        c.fill();
+        // Big smile
+        c.beginPath();
+        c.arc(0, -s * 0.08, s * 0.15, 0.2, Math.PI - 0.2);
+        c.strokeStyle = "#cc0000";
+        c.lineWidth = s * 0.04;
+        c.stroke();
+        // Smile corners
+        c.beginPath();
+        c.moveTo(-s * 0.14, -s * 0.06);
+        c.lineTo(-s * 0.2, s * 0.0);
+        c.moveTo(s * 0.14, -s * 0.06);
+        c.lineTo(s * 0.2, s * 0.0);
+        c.strokeStyle = "#cc0000";
+        c.lineWidth = s * 0.025;
+        c.stroke();
+        c.restore();
+      }
+
+      function drawMinion(c, x, y, s, a) {
+        c.save();
+        c.globalAlpha = a;
+        c.translate(x, y);
+        // Body (yellow pill)
+        c.beginPath();
+        c.ellipse(0, s * 0.1, s * 0.3, s * 0.48, 0, 0, Math.PI * 2);
+        c.fillStyle = "#f5c518";
+        c.fill();
+        c.strokeStyle = "#c9a000";
+        c.lineWidth = s * 0.025;
+        c.stroke();
+        // Overalls (blue)
+        c.beginPath();
+        c.rect(-s * 0.26, s * 0.22, s * 0.52, s * 0.36);
+        c.fillStyle = "#1a4fd6";
+        c.fill();
+        // Overall straps
+        c.fillStyle = "#1a4fd6";
+        c.fillRect(-s * 0.08, -s * 0.1, s * 0.07, s * 0.35);
+        c.fillRect(s * 0.01, -s * 0.1, s * 0.07, s * 0.35);
+        // Goggle band
+        c.beginPath();
+        c.rect(-s * 0.3, -s * 0.22, s * 0.6, s * 0.14);
+        c.fillStyle = "#555";
+        c.fill();
+        // One big eye
+        c.beginPath();
+        c.ellipse(0, -s * 0.18, s * 0.18, s * 0.18, 0, 0, Math.PI * 2);
+        c.fillStyle = "#fff";
+        c.fill();
+        c.strokeStyle = "#888";
+        c.lineWidth = s * 0.02;
+        c.stroke();
+        c.beginPath();
+        c.ellipse(s * 0.03, -s * 0.18, s * 0.1, s * 0.1, 0, 0, Math.PI * 2);
+        c.fillStyle = "#3a1a00";
+        c.fill();
+        c.beginPath();
+        c.ellipse(s * 0.06, -s * 0.21, s * 0.03, s * 0.03, 0, 0, Math.PI * 2);
+        c.fillStyle = "#fff";
+        c.fill();
+        // Mouth smile
+        c.beginPath();
+        c.arc(0, s * 0.06, s * 0.12, 0.1, Math.PI - 0.1);
+        c.strokeStyle = "#a0740a";
+        c.lineWidth = s * 0.03;
+        c.stroke();
+        // Little arms
+        c.beginPath();
+        c.moveTo(-s * 0.3, s * 0.15);
+        c.quadraticCurveTo(-s * 0.45, s * 0.25, -s * 0.38, s * 0.38);
+        c.moveTo(s * 0.3, s * 0.15);
+        c.quadraticCurveTo(s * 0.45, s * 0.25, s * 0.38, s * 0.38);
+        c.strokeStyle = "#f5c518";
+        c.lineWidth = s * 0.07;
+        c.stroke();
+        c.restore();
+      }
+
+      function drawPikachuFace(c, x, y, s, a) {
+        c.save();
+        c.globalAlpha = a;
+        c.translate(x, y);
+        // Head
+        c.beginPath();
+        c.ellipse(0, 0, s * 0.38, s * 0.34, 0, 0, Math.PI * 2);
+        c.fillStyle = "#FFD700";
+        c.fill();
+        c.strokeStyle = "#c9a000";
+        c.lineWidth = s * 0.02;
+        c.stroke();
+        // Ears (black tips)
+        c.beginPath();
+        c.moveTo(-s * 0.18, -s * 0.28);
+        c.lineTo(-s * 0.28, -s * 0.62);
+        c.lineTo(-s * 0.06, -s * 0.32);
+        c.closePath();
+        c.fillStyle = "#FFD700";
+        c.fill();
+        c.strokeStyle = "#c9a000";
+        c.stroke();
+        c.beginPath();
+        c.moveTo(-s * 0.26, -s * 0.62);
+        c.lineTo(-s * 0.2, -s * 0.68);
+        c.lineTo(-s * 0.12, -s * 0.56);
+        c.closePath();
+        c.fillStyle = "#111";
+        c.fill();
+        c.beginPath();
+        c.moveTo(s * 0.18, -s * 0.28);
+        c.lineTo(s * 0.28, -s * 0.62);
+        c.lineTo(s * 0.06, -s * 0.32);
+        c.closePath();
+        c.fillStyle = "#FFD700";
+        c.fill();
+        c.strokeStyle = "#c9a000";
+        c.stroke();
+        c.beginPath();
+        c.moveTo(s * 0.26, -s * 0.62);
+        c.lineTo(s * 0.2, -s * 0.68);
+        c.lineTo(s * 0.12, -s * 0.56);
+        c.closePath();
+        c.fillStyle = "#111";
+        c.fill();
+        // Red cheeks
+        c.beginPath();
+        c.ellipse(-s * 0.25, s * 0.08, s * 0.1, s * 0.08, 0, 0, Math.PI * 2);
+        c.fillStyle = "rgba(255,80,80,0.75)";
+        c.fill();
+        c.beginPath();
+        c.ellipse(s * 0.25, s * 0.08, s * 0.1, s * 0.08, 0, 0, Math.PI * 2);
+        c.fill();
+        // Eyes
+        c.beginPath();
+        c.ellipse(-s * 0.12, -s * 0.06, s * 0.06, s * 0.07, 0, 0, Math.PI * 2);
+        c.fillStyle = "#222";
+        c.fill();
+        c.beginPath();
+        c.ellipse(s * 0.12, -s * 0.06, s * 0.06, s * 0.07, 0, 0, Math.PI * 2);
+        c.fill();
+        // Nose
+        c.beginPath();
+        c.ellipse(0, s * 0.04, s * 0.03, s * 0.02, 0, 0, Math.PI * 2);
+        c.fillStyle = "#a06000";
+        c.fill();
+        // Smile
+        c.beginPath();
+        c.arc(0, s * 0.1, s * 0.1, 0.1, Math.PI - 0.1);
+        c.strokeStyle = "#a06000";
+        c.lineWidth = s * 0.025;
+        c.stroke();
+        c.restore();
+      }
+
+      function drawSpongeBob(c, x, y, s, a) {
+        c.save();
+        c.globalAlpha = a;
+        c.translate(x, y);
+        // Sponge body (rectangle-ish)
+        c.beginPath();
+        c.roundRect(-s * 0.28, -s * 0.2, s * 0.56, s * 0.72, s * 0.06);
+        c.fillStyle = "#FFE135";
+        c.fill();
+        c.strokeStyle = "#c9a000";
+        c.lineWidth = s * 0.025;
+        c.stroke();
+        // Pores
+        for (let i = 0; i < 6; i++) {
+          c.beginPath();
+          c.arc(
+            (Math.random() * 0.4 - 0.2) * s,
+            (Math.random() * 0.4 - 0.1) * s,
+            s * 0.03,
+            0,
+            Math.PI * 2,
+          );
+          c.fillStyle = "rgba(180,140,0,0.3)";
+          c.fill();
+        }
+        // White shirt
+        c.beginPath();
+        c.rect(-s * 0.18, s * 0.28, s * 0.36, s * 0.22);
+        c.fillStyle = "#fff";
+        c.fill();
+        // Brown pants
+        c.beginPath();
+        c.rect(-s * 0.22, s * 0.34, s * 0.44, s * 0.18);
+        c.fillStyle = "#8B4513";
+        c.fill();
+        // Eyes (huge)
+        c.beginPath();
+        c.ellipse(-s * 0.1, -s * 0.0, s * 0.1, s * 0.12, 0, 0, Math.PI * 2);
+        c.fillStyle = "#fff";
+        c.fill();
+        c.strokeStyle = "#333";
+        c.lineWidth = s * 0.02;
+        c.stroke();
+        c.beginPath();
+        c.ellipse(s * 0.1, -s * 0.0, s * 0.1, s * 0.12, 0, 0, Math.PI * 2);
+        c.fillStyle = "#fff";
+        c.fill();
+        c.stroke();
+        c.beginPath();
+        c.ellipse(-s * 0.1, s * 0.02, s * 0.06, s * 0.07, 0, 0, Math.PI * 2);
+        c.fillStyle = "#2244aa";
+        c.fill();
+        c.beginPath();
+        c.ellipse(s * 0.1, s * 0.02, s * 0.06, s * 0.07, 0, 0, Math.PI * 2);
+        c.fill();
+        c.beginPath();
+        c.ellipse(-s * 0.08, s * 0.0, s * 0.025, s * 0.03, 0, 0, Math.PI * 2);
+        c.fillStyle = "#111";
+        c.fill();
+        c.beginPath();
+        c.ellipse(s * 0.12, s * 0.0, s * 0.025, s * 0.03, 0, 0, Math.PI * 2);
+        c.fill();
+        // Big smile + buck teeth
+        c.beginPath();
+        c.arc(0, s * 0.16, s * 0.18, 0.1, Math.PI - 0.1);
+        c.strokeStyle = "#333";
+        c.lineWidth = s * 0.03;
+        c.stroke();
+        c.fillStyle = "#fff";
+        c.fillRect(-s * 0.07, s * 0.14, s * 0.06, s * 0.07);
+        c.fillRect(s * 0.01, s * 0.14, s * 0.06, s * 0.07);
+        c.strokeStyle = "#aaa";
+        c.lineWidth = s * 0.01;
+        c.strokeRect(-s * 0.07, s * 0.14, s * 0.06, s * 0.07);
+        c.strokeRect(s * 0.01, s * 0.14, s * 0.06, s * 0.07);
+        // Freckles
+        c.fillStyle = "#c9a000";
+        for (let d of [-1, 1]) {
+          for (let f of [-1, 0, 1]) {
+            c.beginPath();
+            c.arc(
+              d * s * 0.2 + f * s * 0.04,
+              s * 0.08,
+              s * 0.015,
+              0,
+              Math.PI * 2,
+            );
+            c.fill();
+          }
+        }
+        c.restore();
+      }
+
+      function drawAmongUs(c, x, y, s, col, a) {
+        c.save();
+        c.globalAlpha = a;
+        c.translate(x, y);
+        c.beginPath();
+        c.ellipse(0, s * 0.18, s * 0.34, s * 0.44, 0, 0, Math.PI * 2);
+        c.fillStyle = col;
+        c.fill();
+        c.beginPath();
+        c.ellipse(0, -s * 0.26, s * 0.26, s * 0.27, 0, 0, Math.PI * 2);
+        c.fillStyle = col;
+        c.fill();
+        c.beginPath();
+        c.ellipse(s * 0.07, -s * 0.27, s * 0.16, s * 0.13, 0, 0, Math.PI * 2);
+        c.fillStyle = "rgba(130,230,255,0.9)";
+        c.fill();
+        c.beginPath();
+        c.roundRect(s * 0.26, s * 0.04, s * 0.14, s * 0.24, 3);
+        c.fillStyle = col;
+        c.fill();
+        c.restore();
+      }
+
+      function drawTrollfaceSilhouette(c, x, y, s, a) {
+        // Simplified troll-face-ish grin circle
+        c.save();
+        c.globalAlpha = a * 0.55;
+        c.translate(x, y);
+        c.beginPath();
+        c.arc(0, 0, s * 0.38, 0, Math.PI * 2);
+        c.fillStyle = "#ddd";
+        c.fill();
+        c.strokeStyle = "#555";
+        c.lineWidth = s * 0.03;
+        c.stroke();
+        // Eyes
+        c.fillStyle = "#111";
+        c.beginPath();
+        c.ellipse(
+          -s * 0.13,
+          -s * 0.06,
+          s * 0.07,
+          s * 0.09,
+          -0.2,
+          0,
+          Math.PI * 2,
+        );
+        c.fill();
+        c.beginPath();
+        c.ellipse(s * 0.13, -s * 0.06, s * 0.07, s * 0.09, 0.2, 0, Math.PI * 2);
+        c.fill();
+        // Troll grin
+        c.beginPath();
+        c.arc(0, s * 0.08, s * 0.28, 0.0, Math.PI);
+        c.strokeStyle = "#111";
+        c.lineWidth = s * 0.04;
+        c.stroke();
+        c.beginPath();
+        c.moveTo(-s * 0.28, s * 0.08);
+        c.lineTo(-s * 0.36, s * 0.0);
+        c.moveTo(s * 0.28, s * 0.08);
+        c.lineTo(s * 0.36, s * 0.0);
+        c.strokeStyle = "#111";
+        c.lineWidth = s * 0.025;
+        c.stroke();
+        // Raised brow
+        c.beginPath();
+        c.moveTo(-s * 0.22, -s * 0.18);
+        c.lineTo(-s * 0.06, -s * 0.14);
+        c.moveTo(s * 0.06, -s * 0.14);
+        c.lineTo(s * 0.22, -s * 0.18);
+        c.strokeStyle = "#333";
+        c.lineWidth = s * 0.035;
+        c.stroke();
+        c.restore();
+      }
+
+      function drawDoge(c, x, y, s, a) {
+        c.save();
+        c.globalAlpha = a;
+        c.translate(x, y);
+        // Head
+        c.beginPath();
+        c.ellipse(0, 0, s * 0.36, s * 0.34, 0, 0, Math.PI * 2);
+        c.fillStyle = "#d4a96a";
+        c.fill();
+        c.strokeStyle = "#a07040";
+        c.lineWidth = s * 0.02;
+        c.stroke();
+        // Ears
+        c.beginPath();
+        c.ellipse(-s * 0.3, -s * 0.18, s * 0.1, s * 0.2, -0.5, 0, Math.PI * 2);
+        c.fillStyle = "#c08850";
+        c.fill();
+        c.beginPath();
+        c.ellipse(s * 0.3, -s * 0.18, s * 0.1, s * 0.2, 0.5, 0, Math.PI * 2);
+        c.fill();
+        // Eyes
+        c.beginPath();
+        c.ellipse(-s * 0.13, -s * 0.04, s * 0.07, s * 0.06, 0, 0, Math.PI * 2);
+        c.fillStyle = "#fff";
+        c.fill();
+        c.beginPath();
+        c.ellipse(s * 0.13, -s * 0.04, s * 0.07, s * 0.06, 0, 0, Math.PI * 2);
+        c.fillStyle = "#fff";
+        c.fill();
+        c.beginPath();
+        c.arc(-s * 0.13, -s * 0.04, s * 0.04, 0, Math.PI * 2);
+        c.fillStyle = "#4a2a00";
+        c.fill();
+        c.beginPath();
+        c.arc(s * 0.13, -s * 0.04, s * 0.04, 0, Math.PI * 2);
+        c.fill();
+        // Nose
+        c.beginPath();
+        c.ellipse(0, s * 0.06, s * 0.05, s * 0.04, 0, 0, Math.PI * 2);
+        c.fillStyle = "#333";
+        c.fill();
+        // Smirk
+        c.beginPath();
+        c.arc(s * 0.08, s * 0.14, s * 0.09, Math.PI + 0.3, Math.PI * 2 - 0.1);
+        c.strokeStyle = "#a07040";
+        c.lineWidth = s * 0.025;
+        c.stroke();
+        // "wow" text
+        c.font = `bold ${s * 0.22}px Impact, sans-serif`;
+        c.fillStyle = "rgba(255,220,50,0.9)";
+        c.fillText("wow", -s * 0.22, -s * 0.52);
+        c.restore();
+      }
+
+      function drawPepe(c, x, y, s, a) {
+        c.save();
+        c.globalAlpha = a;
+        c.translate(x, y);
+        // Head/face (green blob)
+        c.beginPath();
+        c.moveTo(0, -s * 0.42);
+        c.bezierCurveTo(
+          s * 0.38,
+          -s * 0.42,
+          s * 0.45,
+          -s * 0.1,
+          s * 0.42,
+          s * 0.18,
+        );
+        c.bezierCurveTo(
+          s * 0.38,
+          s * 0.52,
+          -s * 0.38,
+          s * 0.52,
+          -s * 0.42,
+          s * 0.18,
+        );
+        c.bezierCurveTo(
+          -s * 0.45,
+          -s * 0.1,
+          -s * 0.38,
+          -s * 0.42,
+          0,
+          -s * 0.42,
+        );
+        c.fillStyle = "#5a9e3a";
+        c.fill();
+        c.strokeStyle = "#3a6e20";
+        c.lineWidth = s * 0.03;
+        c.stroke();
+        // Lower lip pout
+        c.beginPath();
+        c.moveTo(-s * 0.22, s * 0.28);
+        c.bezierCurveTo(
+          -s * 0.16,
+          s * 0.48,
+          s * 0.16,
+          s * 0.48,
+          s * 0.22,
+          s * 0.28,
+        );
+        c.fillStyle = "#80c050";
+        c.fill();
+        // Eyes (half-lidded)
+        c.beginPath();
+        c.ellipse(-s * 0.13, -s * 0.06, s * 0.1, s * 0.1, 0, 0, Math.PI * 2);
+        c.fillStyle = "#fff";
+        c.fill();
+        c.strokeStyle = "#333";
+        c.lineWidth = s * 0.02;
+        c.stroke();
+        c.beginPath();
+        c.ellipse(s * 0.13, -s * 0.06, s * 0.1, s * 0.1, 0, 0, Math.PI * 2);
+        c.fillStyle = "#fff";
+        c.fill();
+        c.stroke();
+        // Pupils
+        c.beginPath();
+        c.ellipse(-s * 0.13, -s * 0.04, s * 0.055, s * 0.07, 0, 0, Math.PI * 2);
+        c.fillStyle = "#2a1800";
+        c.fill();
+        c.beginPath();
+        c.ellipse(s * 0.13, -s * 0.04, s * 0.055, s * 0.07, 0, 0, Math.PI * 2);
+        c.fill();
+        // Half lids
+        c.beginPath();
+        c.rect(-s * 0.25, -s * 0.16, s * 0.24, s * 0.1);
+        c.fillStyle = "#5a9e3a";
+        c.fill();
+        c.beginPath();
+        c.rect(s * 0.01, -s * 0.16, s * 0.24, s * 0.1);
+        c.fill();
+        // Smirk / sad mouth
+        c.beginPath();
+        c.moveTo(-s * 0.14, s * 0.18);
+        c.quadraticCurveTo(0, s * 0.26, s * 0.14, s * 0.18);
+        c.strokeStyle = "#3a6e20";
+        c.lineWidth = s * 0.04;
+        c.stroke();
+        c.restore();
+      }
+
+      function drawGigachad(c, x, y, s, a) {
+        c.save();
+        c.globalAlpha = a * 0.45;
+        c.translate(x, y);
+        // Silhouette-style — just jaw and shading
+        c.beginPath();
+        c.moveTo(0, -s * 0.48);
+        c.bezierCurveTo(
+          s * 0.35,
+          -s * 0.44,
+          s * 0.5,
+          s * 0.0,
+          s * 0.38,
+          s * 0.42,
+        );
+        c.lineTo(s * 0.22, s * 0.58);
+        c.lineTo(0, s * 0.68);
+        c.lineTo(-s * 0.22, s * 0.58);
+        c.bezierCurveTo(-s * 0.5, s * 0.0, -s * 0.35, -s * 0.44, 0, -s * 0.48);
+        c.fillStyle = "rgba(180,160,130,0.9)";
+        c.fill();
+        c.strokeStyle = "rgba(80,60,30,0.7)";
+        c.lineWidth = s * 0.04;
+        c.stroke();
+        // Jawline definition
+        c.beginPath();
+        c.moveTo(-s * 0.36, s * 0.18);
+        c.lineTo(-s * 0.2, s * 0.56);
+        c.moveTo(s * 0.36, s * 0.18);
+        c.lineTo(s * 0.2, s * 0.56);
+        c.strokeStyle = "rgba(60,40,20,0.5)";
+        c.lineWidth = s * 0.03;
+        c.stroke();
+        // Brow
+        c.beginPath();
+        c.moveTo(-s * 0.28, -s * 0.12);
+        c.lineTo(-s * 0.06, -s * 0.16);
+        c.moveTo(s * 0.06, -s * 0.16);
+        c.lineTo(s * 0.28, -s * 0.12);
+        c.strokeStyle = "rgba(40,20,0,0.8)";
+        c.lineWidth = s * 0.045;
+        c.stroke();
+        // "CHAD" label
+        c.font = `900 ${s * 0.24}px Impact,sans-serif`;
+        c.fillStyle = "rgba(255,210,0,0.8)";
+        c.fillText("CHAD", -s * 0.28, s * 0.96);
+        c.restore();
+      }
+
+      // Jester hat (pure April Fools icon)
+      function drawJesterHat(c, x, y, s, a) {
+        c.save();
+        c.globalAlpha = a;
+        c.translate(x, y);
+        const cols = ["#ff3b3b", "#ffe135", "#c77dff"];
+        // 3 floppy points
+        const pts = [
+          [-s * 0.28, -s * 0.58],
+          [0, -s * 0.72],
+          [s * 0.28, -s * 0.58],
+        ];
+        const bells = [
+          [-s * 0.28, -s * 0.68],
+          [0, -s * 0.84],
+          [s * 0.28, -s * 0.68],
+        ];
+        cols.forEach((col, i) => {
+          c.beginPath();
+          c.moveTo(-s * 0.32, s * 0.0);
+          c.quadraticCurveTo(
+            pts[i][0] - s * 0.08,
+            pts[i][1],
+            pts[i][0],
+            pts[i][1],
+          );
+          c.quadraticCurveTo(
+            pts[i][0] + s * 0.08,
+            pts[i][1],
+            s * 0.32 * (i === 2 ? 1 : i === 0 ? -1 : 0.01),
+            s * 0.0,
+          );
+          c.fillStyle = col;
+          c.fill();
+          // Bell
+          c.beginPath();
+          c.arc(bells[i][0], bells[i][1], s * 0.07, 0, Math.PI * 2);
+          c.fillStyle = "#ffd700";
+          c.fill();
+          c.strokeStyle = "#b8860b";
+          c.lineWidth = s * 0.02;
+          c.stroke();
+          // Bell detail
+          c.beginPath();
+          c.arc(bells[i][0], bells[i][1] + s * 0.03, s * 0.025, 0, Math.PI);
+          c.strokeStyle = "#b8860b";
+          c.lineWidth = s * 0.015;
+          c.stroke();
+        });
+        // Brim
+        c.beginPath();
+        c.ellipse(0, 0, s * 0.38, s * 0.1, 0, 0, Math.PI * 2);
+        c.fillStyle = "#222";
+        c.fill();
+        c.restore();
+      }
+
+      // SpongeBob's Gary (snail) - simple
+      function drawNyanCatTrail(c, x, y, s, a, t) {
+        c.save();
+        c.globalAlpha = a * 0.7;
+        c.translate(x, y);
+        // Rainbow trail
+        const rb = [
+          "#ff0000",
+          "#ff7f00",
+          "#ffff00",
+          "#00cc00",
+          "#0000ff",
+          "#8b00ff",
+        ];
+        rb.forEach((col, i) => {
+          c.beginPath();
+          c.rect(-s * 1.8, -s * 0.32 + i * (s * 0.105), s * 1.5, s * 0.1);
+          c.fillStyle = col;
+          c.fill();
+        });
+        // Cat body
+        c.beginPath();
+        c.roundRect(-s * 0.2, -s * 0.3, s * 0.55, s * 0.44, s * 0.08);
+        c.fillStyle = "#888";
+        c.fill();
+        // Pop tart body
+        c.beginPath();
+        c.roundRect(-s * 0.18, -s * 0.28, s * 0.5, s * 0.4, s * 0.06);
+        c.fillStyle = "#e0b0d8";
+        c.fill();
+        c.strokeStyle = "#b080a0";
+        c.lineWidth = s * 0.02;
+        c.stroke();
+        // Frosting dots
+        const dotCols = ["#ff6b6b", "#ffe135", "#6bff6b", "#6bd4ff"];
+        for (let d = 0; d < 6; d++) {
+          c.beginPath();
+          c.arc(
+            -s * 0.06 + (d % 3) * s * 0.14,
+            -s * 0.12 + Math.floor(d / 3) * s * 0.18,
+            s * 0.035,
+            0,
+            Math.PI * 2,
+          );
+          c.fillStyle = dotCols[d % 4];
+          c.fill();
+        }
+        // Cat face
+        c.beginPath();
+        c.ellipse(s * 0.28, -s * 0.1, s * 0.18, s * 0.16, 0, 0, Math.PI * 2);
+        c.fillStyle = "#888";
+        c.fill();
+        // Ears
+        c.beginPath();
+        c.moveTo(s * 0.16, -s * 0.22);
+        c.lineTo(s * 0.2, -s * 0.36);
+        c.lineTo(s * 0.28, -s * 0.22);
+        c.closePath();
+        c.fillStyle = "#888";
+        c.fill();
+        c.beginPath();
+        c.moveTo(s * 0.28, -s * 0.22);
+        c.lineTo(s * 0.36, -s * 0.36);
+        c.lineTo(s * 0.42, -s * 0.22);
+        c.closePath();
+        c.fill();
+        // Eyes (dot)
+        c.fillStyle = "#111";
+        c.beginPath();
+        c.arc(s * 0.22, -s * 0.1, s * 0.04, 0, Math.PI * 2);
+        c.fill();
+        c.beginPath();
+        c.arc(s * 0.34, -s * 0.1, s * 0.04, 0, Math.PI * 2);
+        c.fill();
+        // Mouth
+        c.beginPath();
+        c.moveTo(s * 0.25, -s * 0.02);
+        c.lineTo(s * 0.28, s * 0.02);
+        c.lineTo(s * 0.31, -s * 0.02);
+        c.strokeStyle = "#111";
+        c.lineWidth = s * 0.02;
+        c.stroke();
+        // Legs
+        for (let l = -1; l <= 2; l++) {
+          c.fillStyle = "#888";
+          const lx = -s * 0.05 + l * s * 0.14;
+          const ly = s * 0.12 + Math.sin(t * 3 + l) * s * 0.04;
+          c.fillRect(lx, ly, s * 0.08, s * 0.14);
+        }
+        // Tail wagging
+        c.beginPath();
+        c.moveTo(s * 0.44, s * 0.08);
+        c.quadraticCurveTo(
+          s * 0.62,
+          -s * 0.06 + Math.sin(t * 4) * s * 0.18,
+          s * 0.55,
+          -s * 0.32 + Math.cos(t * 4) * s * 0.08,
+        );
+        c.strokeStyle = "#888";
+        c.lineWidth = s * 0.07;
+        c.stroke();
+        c.restore();
+      }
+
+      // --- Object pool ---
+      const CREW_COLORS = [
+        "#c51111",
+        "#132ed1",
+        "#117f2d",
+        "#ed54ba",
+        "#ef7d0e",
+        "#6b2fbb",
+        "#38fedc",
+        "#50ef39",
+        "#ffffff",
+        "#71491e",
+      ];
+
+      const DRAWFNS = [
+        (c, x, y, s, a, t) => drawJoker(c, x, y, s, a),
+        (c, x, y, s, a, t) => drawMinion(c, x, y, s, a),
+        (c, x, y, s, a, t) => drawPikachuFace(c, x, y, s, a),
+        (c, x, y, s, a, t) => drawSpongeBob(c, x, y, s, a),
+        (c, x, y, s, a, t) =>
+          drawAmongUs(
+            c,
+            x,
+            y,
+            s,
+            CREW_COLORS[Math.floor(s * 17) % CREW_COLORS.length],
+            a,
+          ),
+        (c, x, y, s, a, t) => drawTrollfaceSilhouette(c, x, y, s, a),
+        (c, x, y, s, a, t) => drawDoge(c, x, y, s, a),
+        (c, x, y, s, a, t) => drawPepe(c, x, y, s, a),
+        (c, x, y, s, a, t) => drawGigachad(c, x, y, s, a),
+        (c, x, y, s, a, t) => drawJesterHat(c, x, y, s, a),
+        (c, x, y, s, a, t) => drawNyanCatTrail(c, x, y, s, a, t),
+      ];
+
+      // Floating text memes
+      const MEME_TEXTS = [
+        { t: "WHY SO SERIOUS?", col: "#39ff14", font: "900 italic" },
+        { t: "APRIL FOOLS 🃏", col: "#ffe135", font: "900" },
+        { t: "U MAD BRO?", col: "#ff3b3b", font: "900 italic" },
+        { t: "NYAN~", col: "#ff9de2", font: "900" },
+        { t: "MUCH WOW", col: "#ffe135", font: "900 italic" },
+        { t: "IT'S A TRAP!", col: "#2ec4f3", font: "700 italic" },
+        { t: "PRESS F", col: "#c77dff", font: "900" },
+        { t: "STONKS 📈", col: "#3ddc84", font: "900" },
+        { t: "SKILL ISSUE", col: "#ff8c42", font: "900 italic" },
+        { t: "SUSSY BAKA", col: "#ed54ba", font: "900 italic" },
+        { t: "GG EZ", col: "#38fedc", font: "900" },
+        { t: "CAUGHT IN 4K", col: "#ffe135", font: "900 italic" },
+        { t: "BASED", col: "#ff3b3b", font: "900" },
+        { t: "NO CAP FR FR", col: "#50ef39", font: "900 italic" },
+      ];
+
+      function initBgObjects() {
+        const W = bgCanvas.width,
+          H = bgCanvas.height;
+        bgObjects = [];
+        // Characters (28)
+        for (let i = 0; i < 28; i++) {
+          bgObjects.push({
+            type: "char",
+            drawIdx: i % DRAWFNS.length,
+            x: Math.random() * W,
+            y: Math.random() * H,
+            s: Math.random() * 30 + 18,
+            vx: (Math.random() - 0.5) * 0.5,
+            vy: (Math.random() - 0.5) * 0.45,
+            angle: Math.random() * Math.PI * 2,
+            va: (Math.random() - 0.5) * 0.008,
+            opacity: Math.random() * 0.18 + 0.07,
+            phase: Math.random() * Math.PI * 2,
+          });
+        }
+        // Meme texts (20)
+        for (let i = 0; i < 20; i++) {
+          const mt = MEME_TEXTS[i % MEME_TEXTS.length];
+          bgObjects.push({
+            type: "text",
+            text: mt.t,
+            col: mt.col,
+            fontStyle: mt.font,
+            x: Math.random() * W,
+            y: Math.random() * H,
+            size: Math.random() * 14 + 11,
+            vx: (Math.random() - 0.5) * 0.45,
+            vy: (Math.random() - 0.5) * 0.35,
+            angle: (Math.random() - 0.5) * 0.5,
+            opacity: Math.random() * 0.22 + 0.08,
+            phase: Math.random() * Math.PI * 2,
+          });
+        }
+        // Jester diamonds / card suits scattered
+        for (let i = 0; i < 30; i++) {
+          bgObjects.push({
+            type: "suit",
+            suit: ["♠", "♥", "♦", "♣", "🃏"][i % 5],
+            col: ["#ff3b3b", "#ffe135", "#c77dff", "#2ec4f3", "#ff8c42"][i % 5],
+            x: Math.random() * W,
+            y: Math.random() * H,
+            size: Math.random() * 20 + 12,
+            vx: (Math.random() - 0.5) * 0.38,
+            vy: (Math.random() - 0.5) * 0.38,
+            angle: Math.random() * Math.PI * 2,
+            va: (Math.random() - 0.5) * 0.018,
+            opacity: Math.random() * 0.28 + 0.08,
+            phase: Math.random() * Math.PI * 2,
+          });
+        }
+      }
+      initBgObjects();
+
+      // Pulsing BG color bands (April Fools jester diagonal stripes)
+      const BG_STRIPE_COLS = [
+        "rgba(40,0,80,1)",
+        "rgba(20,0,50,1)",
+        "rgba(35,5,70,1)",
+        "rgba(15,0,40,1)",
+      ];
+
+      function drawBg() {
+        bgT += 0.012;
+        const W = bgCanvas.width,
+          H = bgCanvas.height;
+        bgCtx.clearRect(0, 0, W, H);
+
+        // === BACKGROUND: diagonal jester stripe gradient ===
+        const stripeW = Math.max(W, H) * 1.5;
+        bgCtx.save();
+        bgCtx.translate(W / 2, H / 2);
+        bgCtx.rotate(0.42);
+        const numStripes = 16;
+        const sw = stripeW / numStripes;
+        for (let i = 0; i < numStripes; i++) {
+          const offset = (bgT * 18) % (sw * 2);
+          const ix = -stripeW / 2 + i * sw - offset;
+          const even = i % 2 === 0;
+          // Subtle jester diamonds pattern: alternate very dark purple vs deep indigo
+          bgCtx.fillStyle = even ? "rgba(28,0,62,1)" : "rgba(12,4,36,1)";
+          bgCtx.fillRect(ix, -stripeW / 2, sw, stripeW);
+        }
+        bgCtx.restore();
+
+        // Vignette darkening edges
+        const vig = bgCtx.createRadialGradient(
+          W / 2,
+          H / 2,
+          H * 0.15,
+          W / 2,
+          H / 2,
+          H * 0.85,
+        );
+        vig.addColorStop(0, "rgba(0,0,0,0)");
+        vig.addColorStop(1, "rgba(0,0,0,0.72)");
+        bgCtx.fillStyle = vig;
+        bgCtx.fillRect(0, 0, W, H);
+
+        // Subtle pulsing color washes
+        const wash1a = 0.025 + 0.012 * Math.sin(bgT * 0.7);
+        const wash2a = 0.02 + 0.01 * Math.sin(bgT * 0.5 + 1.2);
+        const wg1 = bgCtx.createRadialGradient(
+          W * 0.2,
+          H * 0.25,
+          0,
+          W * 0.2,
+          H * 0.25,
+          W * 0.5,
+        );
+        wg1.addColorStop(0, `rgba(160,0,255,${wash1a})`);
+        wg1.addColorStop(1, "transparent");
+        bgCtx.fillStyle = wg1;
+        bgCtx.fillRect(0, 0, W, H);
+        const wg2 = bgCtx.createRadialGradient(
+          W * 0.8,
+          H * 0.7,
+          0,
+          W * 0.8,
+          H * 0.7,
+          W * 0.5,
+        );
+        wg2.addColorStop(0, `rgba(255,60,0,${wash2a})`);
+        wg2.addColorStop(1, "transparent");
+        bgCtx.fillStyle = wg2;
+        bgCtx.fillRect(0, 0, W, H);
+        const wg3 = bgCtx.createRadialGradient(
+          W * 0.5,
+          H * 1.0,
+          0,
+          W * 0.5,
+          H * 0.9,
+          W * 0.4,
+        );
+        wg3.addColorStop(0, `rgba(0,180,255,0.018)`);
+        wg3.addColorStop(1, "transparent");
+        bgCtx.fillStyle = wg3;
+        bgCtx.fillRect(0, 0, W, H);
+
+        // === DRAW ALL OBJECTS ===
+        bgObjects.forEach((o) => {
+          // Move
+          o.x += o.vx;
+          o.y += o.vy;
+          o.phase += 0.01;
+          if (o.angle !== undefined && o.va) o.angle += o.va;
+          // Wrap
+          const pad = 120;
+          if (o.x < -pad) o.x = W + pad * 0.5;
+          if (o.x > W + pad) o.x = -pad * 0.5;
+          if (o.y < -pad) o.y = H + pad * 0.5;
+          if (o.y > H + pad) o.y = -pad * 0.5;
+
+          const pulsed = o.opacity * (0.75 + 0.25 * Math.sin(o.phase));
+
+          if (o.type === "char") {
+            bgCtx.save();
+            bgCtx.translate(o.x, o.y);
+            bgCtx.rotate(o.angle || 0);
+            bgCtx.translate(-o.x, -o.y);
+            DRAWFNS[o.drawIdx](bgCtx, o.x, o.y, o.s, pulsed, bgT);
+            bgCtx.restore();
+          } else if (o.type === "text") {
+            bgCtx.save();
+            bgCtx.globalAlpha = pulsed;
+            bgCtx.translate(o.x, o.y);
+            bgCtx.rotate(o.angle);
+            bgCtx.font = `${o.fontStyle} ${o.size}px 'Fredoka One', cursive, Impact, sans-serif`;
+            bgCtx.fillStyle = o.col;
+            bgCtx.fillText(o.text, 0, 0);
+            bgCtx.restore();
+          } else if (o.type === "suit") {
+            bgCtx.save();
+            bgCtx.globalAlpha = pulsed;
+            bgCtx.translate(o.x, o.y);
+            bgCtx.rotate(o.angle);
+            bgCtx.font = `${o.size}px serif`;
+            bgCtx.fillStyle = o.col;
+            bgCtx.textAlign = "center";
+            bgCtx.textBaseline = "middle";
+            bgCtx.fillText(o.suit, 0, 0);
+            bgCtx.restore();
+          }
+        });
+
+        requestAnimationFrame(drawBg);
+      }
+      drawBg();
+
+      // === CONFETTI ===
+      const canvas = document.getElementById("confetti-canvas");
+      const ctx = canvas.getContext("2d");
+      let confettiPieces = [];
+      const COLORS = [
+        "#ff3b3b",
+        "#ffe135",
+        "#2ec4f3",
+        "#3ddc84",
+        "#c77dff",
+        "#ff8c42",
+      ];
+
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      resizeCanvas();
+      window.addEventListener("resize", resizeCanvas);
+
+      function spawnConfetti(n = 12) {
+        for (let i = 0; i < n; i++) {
+          confettiPieces.push({
+            x: Math.random() * canvas.width,
+            y: -10,
+            w: Math.random() * 8 + 4,
+            h: Math.random() * 14 + 6,
+            color: COLORS[Math.floor(Math.random() * COLORS.length)],
+            vx: (Math.random() - 0.5) * 3,
+            vy: Math.random() * 2 + 1,
+            angle: Math.random() * 360,
+            vAngle: (Math.random() - 0.5) * 6,
+            opacity: 1,
+          });
+        }
+      }
+      function drawConfetti() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        confettiPieces = confettiPieces.filter((p) => p.opacity > 0.01);
+        confettiPieces.forEach((p) => {
+          ctx.save();
+          ctx.globalAlpha = p.opacity;
+          ctx.translate(p.x, p.y);
+          ctx.rotate((p.angle * Math.PI) / 180);
+          ctx.fillStyle = p.color;
+          ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+          ctx.restore();
+          p.x += p.vx;
+          p.y += p.vy;
+          p.angle += p.vAngle;
+          if (p.y > canvas.height) p.opacity -= 0.1;
+        });
+        requestAnimationFrame(drawConfetti);
+      }
+      drawConfetti();
+      setInterval(() => spawnConfetti(5), 600);
+
+      // === NAV DOTS ===
+      const sections = document.querySelectorAll(".section-card");
+      const navDots = document.getElementById("navDots");
+      const dotColors = [
+        "var(--fool-purple)",
+        "var(--fool-yellow)",
+        "var(--fool-orange)",
+        "var(--fool-blue)",
+        "var(--fool-green)",
+        "var(--fool-red)",
+        "var(--fool-purple)",
+        "var(--fool-orange)",
+      ];
+      sections.forEach((sec, i) => {
+        const dot = document.createElement("div");
+        dot.className = "nav-dot";
+        dot.style.background = dotColors[i];
+        dot.style.color = dotColors[i];
+        dot.title = `Part ${String(i + 1).padStart(2, "0")}`;
+        dot.onclick = () =>
+          sec.scrollIntoView({ behavior: "smooth", block: "start" });
+        navDots.appendChild(dot);
+      });
+
+      // === MODAL ===
+      function openModal(id) {
+        document.getElementById(id).classList.add("open");
+        document.body.style.overflow = "hidden";
+      }
+      function closeModal(id) {
+        document.getElementById(id).classList.remove("open");
+        document.body.style.overflow = "";
+      }
+      document.querySelectorAll(".modal-overlay").forEach((overlay) => {
+        overlay.addEventListener("click", (e) => {
+          if (e.target === overlay) closeModal(overlay.id);
+        });
+      });
+
+      // === TABS ===
+      function switchTab(btn, paneId) {
+        const modal = btn.closest(".modal");
+        modal
+          .querySelectorAll(".tab-btn")
+          .forEach((b) => b.classList.remove("active"));
+        modal
+          .querySelectorAll(".tab-pane")
+          .forEach((p) => p.classList.remove("active"));
+        btn.classList.add("active");
+        document.getElementById(paneId).classList.add("active");
+      }
+
+      // === WORD REVEAL ===
+      function revealWord(el, word) {
+        el.style.display = "none";
+        const ans = el.nextElementSibling;
+        ans.style.display = "block";
+        ans.textContent = "✅ " + word;
+        const card = el.closest(".word-card");
+        const tiles = card.querySelectorAll(".letter-tile");
+        word.split("").forEach((ch, i) => {
+          if (tiles[i]) tiles[i].textContent = ch;
+        });
+        spawnConfetti(20);
+      }
+
+      // === IMPOSTER GAME ===
+      let players = [];
+      let scores = {};
+      let roles = {};
+      let rolesRevealed = {};
+      let roundNum = 0;
+      let gameStarted = false;
+
+      function addPlayer() {
+        const row = document.createElement("div");
+        row.className = "player-input-row";
+        const input = document.createElement("input");
+        input.type = "text";
+        input.placeholder = `Player ${players.length + 1} name...`;
+        const rid = Date.now();
+        input.dataset.rid = rid;
+        const removeBtn = document.createElement("button");
+        removeBtn.className = "remove-btn";
+        removeBtn.innerHTML = "✕";
+        removeBtn.onclick = () => {
+          row.remove();
+          players = players.filter((p) => p.rid != rid);
+        };
+        row.appendChild(input);
+        row.appendChild(removeBtn);
+        document.getElementById("playerList").appendChild(row);
+        players.push({ rid, input });
+        input.focus();
+      }
+
+      function initGame() {
+        const names = [...document.querySelectorAll("#playerList input")]
+          .map((i) => i.value.trim())
+          .filter(Boolean);
+        if (names.length < 3) {
+          alert("Please add at least 3 players! 😅");
+          return;
+        }
+        scores = {};
+        roles = {};
+        rolesRevealed = {};
+        roundNum = 0;
+        names.forEach((n) => {
+          scores[n] = 0;
+        });
+        document.getElementById("gameNotReady").style.display = "none";
+        document.getElementById("gameArea").style.display = "block";
+        // switch to play tab
+        const playBtn = document.querySelector('[onclick*="imp-play"]');
+        switchTab(playBtn, "imp-play");
+        shuffleRoles();
+        renderScoreboard();
+        document.getElementById("roundLog").innerHTML =
+          '<p class="small-note">Game started! No rounds logged yet.</p>';
+      }
+
+      function shuffleRoles() {
+        const names = Object.keys(scores);
+        if (!names.length) return;
+        rolesRevealed = {};
+        const impIdx = Math.floor(Math.random() * names.length);
+        names.forEach((n, i) => {
+          roles[n] = i === impIdx ? "imposter" : "honest";
+        });
+        renderRoleCards();
+      }
+
+      function renderRoleCards() {
+        const grid = document.getElementById("roleGrid");
+        const names = Object.keys(scores);
+        grid.innerHTML = "";
+        names.forEach((name) => {
+          const card = document.createElement("div");
+          card.className = "role-card";
+          card.innerHTML = `<div class="rc-name">${name}</div><div class="rc-role role-hidden">🔒 Tap to reveal</div>`;
+          card.onclick = () => {
+            rolesRevealed[name] = true;
+            const badge = card.querySelector(".rc-role");
+            badge.className =
+              "rc-role " +
+              (roles[name] === "imposter" ? "role-imposter" : "role-honest");
+            badge.textContent =
+              roles[name] === "imposter" ? "🕵️ IMPOSTER" : "😇 Honest";
+            card.onclick = null;
+          };
+          grid.appendChild(card);
+        });
+      }
+
+      function renderScoreboard() {
+        const tbody = document.getElementById("scoreTbody");
+        const names = Object.keys(scores).sort((a, b) => scores[b] - scores[a]);
+        tbody.innerHTML = "";
+        names.forEach((name, i) => {
+          const isImposter = roles[name] === "imposter";
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+      <td>${i + 1}</td>
+      <td><strong>${name}</strong></td>
+      <td>${isImposter && rolesRevealed[name] ? '<span class="tag tag-red">🕵️ Imposter</span>' : rolesRevealed[name] ? '<span class="tag tag-green">😇 Honest</span>' : '<span class="tag" style="background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.3);border:1px solid rgba(255,255,255,0.1)">🔒 Hidden</span>'}</td>
+      <td><span class="score-val" id="sv-${name.replace(/\s/g, "_")}">${scores[name]}</span></td>
+      <td>
+        <div class="score-adj">
+          <button class="adj-btn plus" onclick="adjustScore('${name}', 1)">+</button>
+          <button class="adj-btn minus" onclick="adjustScore('${name}', -1)">−</button>
+        </div>
+      </td>`;
+          tbody.appendChild(tr);
+        });
+      }
+
+      function adjustScore(name, delta) {
+        scores[name] = Math.max(0, scores[name] + delta);
+        renderScoreboard();
+      }
+
+      function awardPoints(type) {
+        const names = Object.keys(scores);
+        const imposter = names.find((n) => roles[n] === "imposter");
+        const honest = names.filter((n) => roles[n] === "honest");
+        roundNum++;
+        let logMsg = `Round ${roundNum}: `;
+
+        if (type === "group") {
+          const pts = Math.random() < 0.5 ? 1 : 2;
+          honest.forEach((n) => {
+            scores[n] = (scores[n] || 0) + pts;
+          });
+          logMsg += `✅ Group wins! Honest players +${pts} pts each.`;
+        } else if (type === "imposter") {
+          const pts = Math.random() < 0.5 ? 2 : 3;
+          if (imposter) scores[imposter] = (scores[imposter] || 0) + pts;
+          logMsg += `🕵️ Imposter (${imposter}) blends in! +${pts} pts.`;
+        } else if (type === "redeem") {
+          const pts = 2;
+          if (imposter) scores[imposter] = (scores[imposter] || 0) + pts;
+          logMsg += `✨ Imposter (${imposter}) redeemed! Guessed the word → steals ${pts} pts.`;
+        }
+
+        renderScoreboard();
+        const log = document.getElementById("roundLog");
+        const entry = document.createElement("div");
+        entry.className = "log-entry";
+        entry.textContent = logMsg;
+        log.prepend(entry);
+        spawnConfetti(15);
+      }
+
+      function resetGame() {
+        if (!confirm("Reset all scores? This cannot be undone!")) return;
+        Object.keys(scores).forEach((n) => {
+          scores[n] = 0;
+        });
+        roundNum = 0;
+        document.getElementById("roundLog").innerHTML =
+          '<p class="small-note">Scores reset.</p>';
+        renderScoreboard();
+      }
+
+      // === FLOATING EMOJI on clicks ===
+      const floatEmojis = [
+        "🎉",
+        "🎈",
+        "🤡",
+        "🃏",
+        "🎭",
+        "✨",
+        "🎊",
+        "😂",
+        "🎂",
+      ];
+      document.addEventListener("click", (e) => {
+        if (e.target.closest(".modal")) return;
+        const el = document.createElement("div");
+        el.className = "floating-emoji";
+        el.textContent =
+          floatEmojis[Math.floor(Math.random() * floatEmojis.length)];
+        el.style.left = e.clientX - 16 + "px";
+        el.style.top = e.clientY - 16 + "px";
+        el.style.animationDuration = Math.random() * 1.2 + 1 + "s";
+        document.body.appendChild(el);
+        setTimeout(() => el.remove(), 2200);
+      });
+
+      // pre-fill some players
+      ["Player 1", "Player 2", "Player 3"].forEach(() => addPlayer());
+      document.querySelectorAll("#playerList input").forEach((inp, i) => {
+        inp.value = ["Player 1", "Player 2", "Player 3"][i];
+      });
+    </script>
+  </body>
+</html>
