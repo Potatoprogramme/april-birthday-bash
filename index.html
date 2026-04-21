@@ -19,17 +19,42 @@
         --dark: #1f1235;
         --card-bg: #2d1a4d;
         --card-border: #5d3fb2;
+        --page-bg:
+          radial-gradient(
+            circle at 15% 20%,
+            rgba(255, 209, 102, 0.35),
+            transparent 38%
+          ),
+          radial-gradient(
+            circle at 85% 15%,
+            rgba(58, 168, 255, 0.3),
+            transparent 35%
+          ),
+          linear-gradient(160deg, #f7ecff 0%, #efe4ff 48%, #e4d6ff 100%);
+        --text-primary: #1f1239;
+        --text-muted: rgba(31, 18, 57, 0.88);
+        --note-color: rgba(31, 18, 57, 0.74);
+        --surface-nav: rgba(255, 255, 255, 0.78);
+        --surface-card: rgba(255, 255, 255, 0.72);
+        --surface-modal: rgba(255, 255, 255, 0.94);
+        --surface-celebrant: rgba(255, 255, 255, 0.74);
+        --surface-border: rgba(93, 63, 178, 0.35);
+        --section-shadow: 0 18px 52px rgba(92, 63, 154, 0.24);
+        --overlay-modal: rgba(86, 56, 140, 0.52);
+        --footer-color: rgba(49, 34, 82, 0.7);
+        --stripe-a: rgba(200, 171, 255, 0.86);
+        --stripe-b: rgba(182, 149, 245, 0.82);
+        --vignette-in: rgba(120, 80, 180, 0);
+        --vignette-out: rgba(113, 79, 173, 0.38);
+        --eating-card-border: rgba(255, 140, 66, 0.34);
+        --eating-card-bg: linear-gradient(135deg, #fff6e9, #f5ecff);
+        --header-bg: linear-gradient(135deg, #ffffffd4 0%, #efe4ffd6 100%);
+        --header-subtitle: #5b3a94;
+        --header-glow: 0 16px 46px rgba(116, 84, 189, 0.25);
       }
 
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-
-      body {
-        font-family: "Nunito", sans-serif;
-        background:
+      body[data-theme="dark"] {
+        --page-bg:
           radial-gradient(
             circle at 15% 20%,
             rgba(255, 209, 102, 0.24),
@@ -41,7 +66,42 @@
             transparent 34%
           ),
           linear-gradient(160deg, #160924 0%, #231045 48%, #12081e 100%);
-        color: #fff;
+        --text-primary: #ffffff;
+        --text-muted: rgba(255, 255, 255, 0.8);
+        --note-color: rgba(255, 255, 255, 0.4);
+        --surface-nav: rgba(32, 12, 56, 0.86);
+        --surface-card: rgba(44, 22, 84, 0.78);
+        --surface-modal: var(--card-bg);
+        --surface-celebrant: rgba(52, 28, 97, 0.76);
+        --surface-border: rgba(255, 209, 102, 0.3);
+        --section-shadow: 0 18px 52px rgba(11, 4, 22, 0.62);
+        --overlay-modal: rgba(13, 5, 24, 0.86);
+        --footer-color: rgba(255, 239, 210, 0.45);
+        --stripe-a: rgba(28, 0, 62, 1);
+        --stripe-b: rgba(12, 4, 36, 1);
+        --vignette-in: rgba(0, 0, 0, 0);
+        --vignette-out: rgba(0, 0, 0, 0.72);
+        --eating-card-border: rgba(255, 140, 66, 0.3);
+        --eating-card-bg: linear-gradient(135deg, #16213e, #1a1020);
+        --header-bg: linear-gradient(
+          180deg,
+          rgba(33, 12, 69, 0.97) 0%,
+          rgba(58, 23, 100, 0.92) 100%
+        );
+        --header-subtitle: var(--fool-yellow);
+        --header-glow: 0 16px 46px rgba(12, 4, 24, 0.52);
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Nunito", sans-serif;
+        background: var(--page-bg);
+        color: var(--text-primary);
         min-height: 100vh;
         overflow-x: hidden;
         cursor:
@@ -127,13 +187,10 @@
         z-index: 10;
         text-align: center;
         padding: 48px 24px 32px;
-        background: linear-gradient(
-          180deg,
-          rgba(33, 12, 69, 0.97) 0%,
-          rgba(58, 23, 100, 0.92) 100%
-        );
+        background: var(--header-bg);
         border-bottom: 4px dashed var(--fool-yellow);
         overflow: hidden;
+        box-shadow: var(--header-glow);
       }
       .header::before {
         content: "🎭🎉🤡🎈🎊🃏🎭🎉🤡🎈🎊🃏🎭🎉🤡🎈";
@@ -143,6 +200,18 @@
         margin-bottom: 16px;
         animation: scroll-emoji 12s linear infinite;
         white-space: nowrap;
+      }
+      .header::after {
+        content: "";
+        position: absolute;
+        inset: auto -10% -30px;
+        height: 110px;
+        background: radial-gradient(
+          ellipse at center,
+          rgba(255, 209, 102, 0.35),
+          rgba(255, 209, 102, 0)
+        );
+        pointer-events: none;
       }
       @keyframes scroll-emoji {
         0% {
@@ -180,13 +249,38 @@
       .header .subtitle {
         font-family: "Bubblegum Sans", cursive;
         font-size: 1.2rem;
-        color: var(--fool-yellow);
+        color: var(--header-subtitle);
         margin-top: 8px;
         letter-spacing: 2px;
       }
+      .header-meta {
+        margin-top: 14px;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .meta-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 5px 12px;
+        border-radius: 999px;
+        font-family: "Bubblegum Sans", cursive;
+        font-size: 0.82rem;
+        letter-spacing: 0.4px;
+        color: var(--text-primary);
+        background: rgba(255, 255, 255, 0.4);
+        border: 1px solid rgba(93, 63, 178, 0.3);
+      }
+      body[data-theme="dark"] .meta-pill {
+        color: #fff;
+        background: rgba(255, 255, 255, 0.12);
+        border-color: rgba(255, 209, 102, 0.35);
+      }
       .fool-badge {
         display: inline-block;
-        background: var(--fool-red);
+        background: linear-gradient(90deg, var(--fool-red), var(--fool-orange));
         color: #fff;
         font-family: "Boogaloo", cursive;
         font-size: 0.85rem;
@@ -217,7 +311,7 @@
         position: sticky;
         top: 0;
         z-index: 50;
-        background: rgba(32, 12, 56, 0.86);
+        background: var(--surface-nav);
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
         border-bottom: 2px dashed rgba(255, 209, 102, 0.38);
@@ -249,11 +343,11 @@
 
       /* Program section card */
       .section-card {
-        background: rgba(44, 22, 84, 0.78);
+        background: var(--surface-card);
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
         border-radius: 20px;
-        border: 2px solid var(--card-border);
+        border: 2px solid var(--surface-border);
         padding: 28px 32px;
         margin-bottom: 28px;
         position: relative;
@@ -265,7 +359,7 @@
       }
       .section-card:hover {
         transform: translateY(-4px) rotate(0.3deg);
-        box-shadow: 0 18px 52px rgba(11, 4, 22, 0.62);
+        box-shadow: var(--section-shadow);
       }
       @keyframes card-in {
         from {
@@ -307,6 +401,10 @@
       .card-food::before {
         background: var(--fool-purple);
       }
+      .card-eating {
+        border-color: var(--eating-card-border);
+        background: var(--eating-card-bg);
+      }
 
       .section-number {
         font-family: "Fredoka One", cursive;
@@ -339,7 +437,7 @@
       }
       .section-body {
         font-size: 1rem;
-        color: rgba(255, 255, 255, 0.8);
+        color: var(--text-muted);
         line-height: 1.7;
       }
       .tag {
@@ -443,7 +541,7 @@
         display: none;
         position: fixed;
         inset: 0;
-        background: rgba(13, 5, 24, 0.86);
+        background: var(--overlay-modal);
         z-index: 200;
         align-items: center;
         justify-content: center;
@@ -453,7 +551,7 @@
         display: flex;
       }
       .modal {
-        background: var(--card-bg);
+        background: var(--surface-modal);
         border-radius: 24px;
         border: 2px solid var(--card-border);
         max-width: 700px;
@@ -482,7 +580,7 @@
         border: none;
         font-size: 1.8rem;
         cursor: pointer;
-        color: #fff;
+        color: var(--text-muted);
         opacity: 0.6;
         transition:
           opacity 0.2s,
@@ -499,7 +597,7 @@
       }
       .modal-subtitle {
         font-size: 0.9rem;
-        color: rgba(255, 255, 255, 0.5);
+        color: var(--text-muted);
         margin-bottom: 20px;
       }
       .modal h3 {
@@ -512,13 +610,13 @@
       .modal ol {
         padding-left: 22px;
         line-height: 1.9;
-        color: rgba(255, 255, 255, 0.85);
+        color: var(--text-muted);
       }
       .modal li {
         margin-bottom: 4px;
       }
       .modal p {
-        color: rgba(255, 255, 255, 0.8);
+        color: var(--text-muted);
         line-height: 1.8;
       }
 
@@ -584,7 +682,7 @@
       }
       .word-hint {
         font-size: 0.85rem;
-        color: rgba(255, 255, 255, 0.55);
+        color: var(--note-color);
         font-style: italic;
       }
       .word-reveal {
@@ -619,11 +717,14 @@
         border: 1.5px solid rgba(255, 255, 255, 0.2);
         border-radius: 10px;
         padding: 10px 14px;
-        color: #fff;
+        color: var(--text-primary);
         font-family: "Nunito", sans-serif;
         font-size: 0.95rem;
         outline: none;
         transition: border-color 0.2s;
+      }
+      .player-input-row input::placeholder {
+        color: var(--note-color);
       }
       .player-input-row input:focus {
         border-color: var(--fool-blue);
@@ -851,9 +952,9 @@
         flex-direction: column;
         align-items: center;
         gap: 10px;
-        background: rgba(52, 28, 97, 0.76);
+        background: var(--surface-celebrant);
         backdrop-filter: blur(10px);
-        border: 2px solid rgba(255, 209, 102, 0.3);
+        border: 2px solid var(--surface-border);
         border-radius: 18px;
         padding: 18px 16px 14px;
         width: 130px;
@@ -888,14 +989,30 @@
       .celebrant-avatar::before {
         content: "";
         position: absolute;
-        width: 0;
-        height: 0;
-        top: -28px;
+        width: 28px;
+        height: 30px;
+        top: -30px;
         left: 50%;
         transform: translateX(-50%) rotate(-6deg);
-        border-left: 14px solid transparent;
-        border-right: 14px solid transparent;
-        border-bottom: 28px solid var(--fool-red);
+        background:
+          radial-gradient(circle at 50% 12%, #fff 0 3px, transparent 3.5px),
+          radial-gradient(
+            circle at 30% 58%,
+            rgba(255, 255, 255, 0.38) 0 1.2px,
+            transparent 1.4px
+          ),
+          radial-gradient(
+            circle at 70% 70%,
+            rgba(255, 255, 255, 0.35) 0 1.3px,
+            transparent 1.5px
+          ),
+          repeating-linear-gradient(
+            125deg,
+            var(--hat-c1, var(--fool-red)) 0 5px,
+            var(--hat-c2, var(--fool-yellow)) 5px 10px
+          );
+        clip-path: polygon(50% 0, 2% 100%, 98% 100%);
+        border-bottom: 3px solid rgba(255, 255, 255, 0.85);
         filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.28));
         animation: hat-bounce 1.8s ease-in-out infinite;
         transform-origin: center bottom;
@@ -921,13 +1038,16 @@
         z-index: 2;
       }
       .celebrant-card:nth-child(odd) .celebrant-avatar::before {
-        border-bottom-color: var(--fool-blue);
+        --hat-c1: var(--fool-blue);
+        --hat-c2: var(--fool-yellow);
       }
       .celebrant-card:nth-child(3n) .celebrant-avatar::before {
-        border-bottom-color: var(--fool-yellow);
+        --hat-c1: var(--fool-yellow);
+        --hat-c2: var(--fool-orange);
       }
       .celebrant-card:nth-child(4n) .celebrant-avatar::before {
-        border-bottom-color: var(--fool-green);
+        --hat-c1: var(--fool-green);
+        --hat-c2: var(--fool-purple);
       }
       @keyframes hat-bounce {
         0%,
@@ -942,7 +1062,7 @@
         font-family: "Bubblegum Sans", cursive;
         font-size: 0.82rem;
         text-align: center;
-        color: rgba(255, 255, 255, 0.9);
+        color: var(--text-primary);
         line-height: 1.3;
       }
       .celebrant-num {
@@ -996,7 +1116,7 @@
         border: 2px solid rgba(255, 255, 255, 0.15);
         background: none;
         border-radius: 999px;
-        color: rgba(255, 255, 255, 0.5);
+        color: var(--text-muted);
         font-family: "Bubblegum Sans", cursive;
         cursor: pointer;
         font-size: 0.95rem;
@@ -1023,7 +1143,7 @@
       }
       .small-note {
         font-size: 0.82rem;
-        color: rgba(255, 255, 255, 0.4);
+        color: var(--note-color);
         margin-top: 8px;
       }
       .highlight {
@@ -1050,10 +1170,48 @@
         text-align: center;
         padding: 32px 20px;
         font-size: 0.85rem;
-        color: rgba(255, 239, 210, 0.45);
+        color: var(--footer-color);
         border-top: 2px dashed rgba(255, 209, 102, 0.2);
         position: relative;
         z-index: 5;
+      }
+
+      .theme-toggle {
+        position: fixed;
+        top: 12px;
+        right: 12px;
+        z-index: 300;
+        border: 2px solid rgba(255, 255, 255, 0.45);
+        background: rgba(255, 255, 255, 0.2);
+        color: #ffffff;
+        border-radius: 999px;
+        padding: 8px 14px;
+        font-family: "Fredoka One", cursive;
+        font-size: 0.82rem;
+        letter-spacing: 0.5px;
+        cursor: pointer;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+      }
+      .theme-toggle:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 8px 18px rgba(93, 63, 178, 0.28);
+      }
+      body[data-theme="light"] .theme-toggle {
+        color: #261a40;
+        border-color: rgba(93, 63, 178, 0.35);
+      }
+      body[data-theme="light"] .word-chip {
+        color: var(--text-primary);
+        border-color: rgba(93, 63, 178, 0.35);
+        background: rgba(140, 110, 210, 0.1);
+      }
+      body[data-theme="light"] .role-hidden {
+        color: rgba(31, 18, 57, 0.58);
+        background: rgba(140, 110, 210, 0.14);
       }
 
       /* Scrollbar */
@@ -1078,10 +1236,20 @@
         .word-grid {
           grid-template-columns: 1fr 1fr;
         }
+        .header {
+          padding-top: 58px;
+        }
+        .header h1 {
+          font-size: clamp(2rem, 9vw, 3rem);
+        }
       }
     </style>
   </head>
   <body>
+    <button class="theme-toggle" id="themeToggle" type="button">
+      🌙 Dark Mode
+    </button>
+
     <!-- POP CULTURE BG -->
     <canvas id="bg-canvas"></canvas>
     <canvas id="confetti-canvas"></canvas>
@@ -1110,6 +1278,10 @@
     <div class="header">
       <h1>🎂 Birthday Bash 🃏</h1>
       <div class="subtitle">✨ April Fools Edition ✨</div>
+      <div class="header-meta">
+        <span class="meta-pill">📅 April 2026</span>
+        <span class="meta-pill">🎮 Games + Celebrations</span>
+      </div>
       <span class="fool-badge">🤡 Nobody is safe from fun today!</span>
     </div>
 
@@ -1491,14 +1663,7 @@
       </div>
 
       <!-- 8. EATING TIME -->
-      <div
-        class="section-card card-food"
-        data-section="8"
-        style="
-          border-color: rgba(255, 140, 66, 0.3);
-          background: linear-gradient(135deg, #16213e, #1a1020);
-        "
-      >
+      <div class="section-card card-food card-eating" data-section="8">
         <div class="section-number">Part 08</div>
         <div class="section-title">
           <span class="section-emoji" style="animation-duration: 1s">🍕</span>
@@ -2787,8 +2952,10 @@
           const offset = (bgT * 18) % (sw * 2);
           const ix = -stripeW / 2 + i * sw - offset;
           const even = i % 2 === 0;
-          // Subtle jester diamonds pattern: alternate very dark purple vs deep indigo
-          bgCtx.fillStyle = even ? "rgba(28,0,62,1)" : "rgba(12,4,36,1)";
+          const cs = getComputedStyle(document.body);
+          const stripeA = cs.getPropertyValue("--stripe-a").trim();
+          const stripeB = cs.getPropertyValue("--stripe-b").trim();
+          bgCtx.fillStyle = even ? stripeA : stripeB;
           bgCtx.fillRect(ix, -stripeW / 2, sw, stripeW);
         }
         bgCtx.restore();
@@ -2802,8 +2969,9 @@
           H / 2,
           H * 0.85,
         );
-        vig.addColorStop(0, "rgba(0,0,0,0)");
-        vig.addColorStop(1, "rgba(0,0,0,0.72)");
+        const cs = getComputedStyle(document.body);
+        vig.addColorStop(0, cs.getPropertyValue("--vignette-in").trim());
+        vig.addColorStop(1, cs.getPropertyValue("--vignette-out").trim());
         bgCtx.fillStyle = vig;
         bgCtx.fillRect(0, 0, W, H);
 
@@ -3208,6 +3376,26 @@
       ["Player 1", "Player 2", "Player 3"].forEach(() => addPlayer());
       document.querySelectorAll("#playerList input").forEach((inp, i) => {
         inp.value = ["Player 1", "Player 2", "Player 3"][i];
+      });
+
+      // === THEME TOGGLE (default: light) ===
+      const themeToggle = document.getElementById("themeToggle");
+      const savedTheme = localStorage.getItem("partyTheme");
+      let currentTheme = savedTheme === "dark" ? "dark" : "light";
+
+      function applyTheme(theme) {
+        currentTheme = theme;
+        document.body.setAttribute("data-theme", theme);
+        themeToggle.textContent =
+          theme === "dark" ? "☀️ Light Mode" : "🌙 Dark Mode";
+      }
+
+      applyTheme(currentTheme);
+
+      themeToggle.addEventListener("click", () => {
+        const nextTheme = currentTheme === "dark" ? "light" : "dark";
+        applyTheme(nextTheme);
+        localStorage.setItem("partyTheme", nextTheme);
       });
     </script>
   </body>
